@@ -16,15 +16,15 @@ section {
   display: flex;
 }
 
-.bg-blue {
+#button-ingredients {
   background-color: #3282f7;
 }
 
-.bg-green {
+#button-appliance {
   background-color: #68d9a4;
 }
 
-.bg-orange {
+#button-ustensils {
   background-color: #ed6454;
 }
 
