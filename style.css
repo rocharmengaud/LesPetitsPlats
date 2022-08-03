@@ -87,9 +87,23 @@ section {
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
 }
 
-.card-title,
+.card-recipe {
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .card-info {
-  justify-content: space-between;
+  font-size: 12px;
+}
+
+.card-recipe,
+.card-info {
+  gap: 1rem;
+}
+
+.card-description {
+  text-overflow: ellipsis;
 }

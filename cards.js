@@ -37,7 +37,7 @@ class recipeCard {
     cardTitle.innerHTML = this.card.name;
     const cardTiming = document.createElement('div');
     cardTiming.className = 'card-timing';
-    cardTiming.innerHTML = this.card.time + 'minutes';
+    cardTiming.innerHTML = '<img id="clock" src="assets/clock.svg" alt="Clock" /> ' + this.card.time + ' minutes';
 
     const cardInfo = document.createElement('div');
     cardInfo.classList.add('card-info', 'flex');
@@ -47,6 +47,7 @@ class recipeCard {
     cardIngredients.innerHTML = this.card.ingredient;
     const cardDescription = document.createElement('div');
     cardDescription.className = 'card-description';
+    cardDescription.innerHTML = this.card.description;
 
     cardGrid.appendChild(card);
     card.appendChild(cardPicture);
@@ -54,6 +55,9 @@ class recipeCard {
     cardBody.appendChild(cardRecipe);
     cardRecipe.appendChild(cardTitle);
     cardRecipe.appendChild(cardTiming);
+    cardBody.appendChild(cardInfo);
+    cardInfo.appendChild(cardIngredients);
+    cardInfo.appendChild(cardDescription);
   }
 }
 
