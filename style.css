@@ -102,6 +102,12 @@ section {
 .card-recipe,
 .card-info {
   gap: 1rem;
+  justify-content: space-between;
+}
+
+.card-ingredients,
+.card-description {
+  flex: 25%;
 }
 
 .card-description {

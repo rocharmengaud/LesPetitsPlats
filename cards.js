@@ -37,17 +37,25 @@ class recipeCard {
     cardTitle.innerHTML = this.card.name;
     const cardTiming = document.createElement('div');
     cardTiming.className = 'card-timing';
-    cardTiming.innerHTML = '<img id="clock" src="assets/clock.svg" alt="Clock" /> ' + this.card.time + ' minutes';
+    cardTiming.innerHTML = '<img id="clock" src="assets/clock.svg" alt="Clock" /> ' + this.card.time + ' min';
 
     const cardInfo = document.createElement('div');
     cardInfo.classList.add('card-info', 'flex');
 
     const cardIngredients = document.createElement('div');
     cardIngredients.className = 'card-ingredients';
-    cardIngredients.innerHTML = this.card.ingredient;
+    this.card.ingredients.forEach((Element) => {
+      cardIngredients.innerHTML += '<strong>' + Element.ingredient + ':</strong> ' + Element.quantity + Element.unit + '<br/>';
+    });
     const cardDescription = document.createElement('div');
     cardDescription.className = 'card-description';
-    cardDescription.innerHTML = this.card.description;
+    let description = '';
+    if (this.card.description.length >= 170) {
+      description = this.card.description.slice(0, 170) + '...';
+    } else {
+      description = this.card.description;
+    }
+    cardDescription.innerHTML = description;
 
     cardGrid.appendChild(card);
     card.appendChild(cardPicture);
@@ -59,6 +67,14 @@ class recipeCard {
     cardInfo.appendChild(cardIngredients);
     cardInfo.appendChild(cardDescription);
   }
+
+  createIngredientTag(cardElement) {
+    cardElement.ingredients.forEach((Element) => {
+      const ingredientTag = document.createElement('div');
+      ingredientTag.innerText = Element.ingredient;
+      document.querySelector('.ingredient-tag').appendChild(ingredientTag);
+    });
+  }
 }
 
 class App {
@@ -68,13 +84,26 @@ class App {
 
   async main() {
     const json = await this.fullData.get();
+
     for (const card of json.recipes) {
       // json.recipes = json.la clé.dans le json (ici "recipes")
       const template = new recipeCard(card);
       template.createRecipeCard();
+      // boucle pour importer les ingredients dans le button
+      template.createIngredientTag(card);
     }
   }
 }
+
+// function uniqueWord(word) {
+//   let arr = [];
+//   word.forEach(element => {
+//     if(!arr.includes(element)){
+//        arr.push(element);
+//     }
+//   });
+//   return arr;
+// }
 
 const app = new App();
 app.main();
