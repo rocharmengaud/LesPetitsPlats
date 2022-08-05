@@ -76,6 +76,22 @@ class recipeCard {
       document.querySelector('.ingredient-list').appendChild(ingredientList);
     });
   }
+
+  // createApplianceList(appliance) {
+  //   appliance.appliance.forEach((Element) => {
+  //     const applianceList = document.createElement('div');
+  //     applianceList.innerText = Element.appliance;
+  //     document.querySelector('.appliance-list').appendChild(applianceList);
+  //   });
+  // }
+
+  // createUstensilsList(ustensils) {
+  //   ustensils.ustensils.forEach((Element) => {
+  //     const ustensilsList = document.createElement('div');
+  //     ustensilsList.innerText = Element.ustensils;
+  //     document.querySelector('.ustensils-list').appendChild(ustensilsList);
+  //   });
+  // }
 }
 
 class App {
@@ -90,8 +106,10 @@ class App {
       // json.recipes = json.la clé.dans le json (ici "recipes")
       const template = new recipeCard(data);
       template.createRecipeCard();
-      // boucle pour importer les ingredients dans le button
+      // boucle pour importer les données dans le button
       template.createIngredientList(data);
+      // template.createApplianceList(data);
+      // template.createUstensilsList(data);
     }
   }
 }
