@@ -16,6 +16,10 @@ section {
   display: flex;
 }
 
+ul {
+  padding: 0;
+}
+
 #button-ingredients {
   background-color: #3282f7;
 }

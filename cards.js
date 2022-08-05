@@ -51,6 +51,7 @@ class recipeCard {
     cardDescription.className = 'card-description';
     let description = '';
     if (this.card.description.length >= 170) {
+      // slice permet de reduire le texte au nombre de caracteres souhaité
       description = this.card.description.slice(0, 170) + '...';
     } else {
       description = this.card.description;
@@ -68,11 +69,11 @@ class recipeCard {
     cardInfo.appendChild(cardDescription);
   }
 
-  createIngredientTag(cardElement) {
-    cardElement.ingredients.forEach((Element) => {
-      const ingredientTag = document.createElement('div');
-      ingredientTag.innerText = Element.ingredient;
-      document.querySelector('.ingredient-tag').appendChild(ingredientTag);
+  createIngredientList(ingredients) {
+    ingredients.ingredients.forEach((Element) => {
+      const ingredientList = document.createElement('div');
+      ingredientList.innerText = Element.ingredient;
+      document.querySelector('.ingredient-list').appendChild(ingredientList);
     });
   }
 }
@@ -85,12 +86,12 @@ class App {
   async main() {
     const json = await this.fullData.get();
 
-    for (const card of json.recipes) {
+    for (const data of json.recipes) {
       // json.recipes = json.la clé.dans le json (ici "recipes")
-      const template = new recipeCard(card);
+      const template = new recipeCard(data);
       template.createRecipeCard();
       // boucle pour importer les ingredients dans le button
-      template.createIngredientTag(card);
+      template.createIngredientList(data);
     }
   }
 }
