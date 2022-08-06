@@ -77,21 +77,21 @@ class recipeCard {
     });
   }
 
-  // createApplianceList(appliance) {
-  //   appliance.appliance.forEach((Element) => {
-  //     const applianceList = document.createElement('div');
-  //     applianceList.innerText = Element.appliance;
-  //     document.querySelector('.appliance-list').appendChild(applianceList);
-  //   });
-  // }
+  createApplianceList(appliance) {
+    appliance.recipes.forEach((Element) => {
+      const applianceList = document.createElement('div');
+      applianceList.innerText = Element.appliance;
+      document.querySelector('.appliance-list').appendChild(applianceList);
+    });
+  }
 
-  // createUstensilsList(ustensils) {
-  //   ustensils.ustensils.forEach((Element) => {
-  //     const ustensilsList = document.createElement('div');
-  //     ustensilsList.innerText = Element.ustensils;
-  //     document.querySelector('.ustensils-list').appendChild(ustensilsList);
-  //   });
-  // }
+  createUstensilsList(ustensils) {
+    ustensils.recipes.forEach((Element) => {
+      const ustensilsList = document.createElement('div');
+      ustensilsList.innerText = Element.ustensils;
+      document.querySelector('.ustensils-list').appendChild(ustensilsList);
+    });
+  }
 }
 
 class App {
