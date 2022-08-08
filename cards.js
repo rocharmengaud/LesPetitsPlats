@@ -78,7 +78,7 @@ class recipeCard {
   }
 
   createApplianceList(appliance) {
-    appliance.recipes.forEach((Element) => {
+    appliance.appliance.forEach((Element) => {
       const applianceList = document.createElement('div');
       applianceList.innerText = Element.appliance;
       document.querySelector('.appliance-list').appendChild(applianceList);
@@ -86,7 +86,7 @@ class recipeCard {
   }
 
   createUstensilsList(ustensils) {
-    ustensils.recipes.forEach((Element) => {
+    ustensils.ustensils.forEach((Element) => {
       const ustensilsList = document.createElement('div');
       ustensilsList.innerText = Element.ustensils;
       document.querySelector('.ustensils-list').appendChild(ustensilsList);

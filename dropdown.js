@@ -19,13 +19,19 @@ console.log(ingredientListElements);
 
 // l'event listener doit etre placé sur la fleche du dropdown
 buttonIngredients.addEventListener('click', (event) => {
+  buttonIngredients.value = '';
   ingredientList.classList.toggle('three-columns');
+  buttonIngredients.classList.toggle('big-btn');
 });
 
 buttonAppliance.addEventListener('click', (event) => {
+  buttonAppliance.value = '';
   applianceList.classList.toggle('three-columns');
+  buttonAppliance.classList.toggle('big-btn');
 });
 
 buttonUstensils.addEventListener('click', (event) => {
+  buttonUstensils.value = '';
   ustensilsList.classList.toggle('three-columns');
+  buttonUstensils.classList.toggle('big-btn');
 });

@@ -120,6 +120,10 @@ ul {
   border-radius: 5px;
 }
 
+.big-btn {
+  width: 600px;
+}
+
 .ingredient-list {
   background-color: #3282f7;
 }
@@ -130,12 +134,21 @@ ul {
   gap: 3rem;
 }
 
+.card-body {
+  background-color: #e7e7e7;
+}
+
+.card .card-picture {
+  height: 200px;
+}
+
 .card-recipe {
   font-weight: bold;
   font-size: 18px;
 }
 
 .card-info {
+  padding-top: 0.5rem;
   font-size: 12px;
 }
 
