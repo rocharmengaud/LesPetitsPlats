@@ -78,7 +78,9 @@ class recipeCard {
   }
 
   createApplianceList(appliance) {
-    appliance.appliance.forEach((Element) => {
+    const applianceArray = this.card.appliance;
+
+    Array.from(applianceArray).forEach(function (element) {
       const applianceList = document.createElement('div');
       applianceList.innerText = Element.appliance;
       document.querySelector('.appliance-list').appendChild(applianceList);
@@ -86,7 +88,7 @@ class recipeCard {
   }
 
   createUstensilsList(ustensils) {
-    ustensils.ustensils.forEach((Element) => {
+    ustensils.recipes.forEach((Element) => {
       const ustensilsList = document.createElement('div');
       ustensilsList.innerText = Element.ustensils;
       document.querySelector('.ustensils-list').appendChild(ustensilsList);
@@ -108,7 +110,7 @@ class App {
       template.createRecipeCard();
       // boucle pour importer les données dans le button
       template.createIngredientList(data);
-      // template.createApplianceList(data);
+      template.createApplianceList(data);
       // template.createUstensilsList(data);
     }
   }

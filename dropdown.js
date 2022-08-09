@@ -35,3 +35,11 @@ buttonUstensils.addEventListener('click', (event) => {
   ustensilsList.classList.toggle('three-columns');
   buttonUstensils.classList.toggle('big-btn');
 });
+
+// Array.from(
+//   ingredientList.forEach(function (element) {
+//     element.addEventListener('click', (event) => {
+//       console.log('test');
+//     });
+//   })
+// );

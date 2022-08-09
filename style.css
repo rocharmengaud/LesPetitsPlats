@@ -116,8 +116,13 @@ ul {
 }
 
 .btn {
+  width: 150px;
   padding: 1rem 1rem;
   border-radius: 5px;
+}
+
+.btn::placeholder {
+  color: white;
 }
 
 .big-btn {
