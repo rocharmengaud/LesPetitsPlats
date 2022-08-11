@@ -1,17 +1,13 @@
 const searchbarInput = document.querySelector('#search-recipe');
 const searchbarSubmit = document.querySelector('#icon');
+searchbarSubmit.addEventListener('click', (event) => {});
+const searchbarValue = searchbarInput.value;
 
-function generalFilter() {
-  searchbarSubmit.addEventListener('click', (event) => {
-    const searchbarValue = searchbarInput.value;
-
-    if (searchbarValue.length >= 3) {
-      console.log(searchbarValue);
-      return true;
-    } else {
-      return false;
-    }
-  });
+function filtreGeneral(searchTerms) {
+  if (searchbarValue.length > 2) {
+    console.log(searchbarValue);
+  } else {
+  }
 }
 
-generalFilter();
+filtreGeneral();

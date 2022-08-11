@@ -78,19 +78,15 @@ class recipeCard {
   }
 
   createApplianceList(appliance) {
-    const applianceArray = this.card.appliance;
-
-    Array.from(applianceArray).forEach(function (element) {
-      const applianceList = document.createElement('div');
-      applianceList.innerText = Element.appliance;
-      document.querySelector('.appliance-list').appendChild(applianceList);
-    });
+    const applianceList = document.createElement('div');
+    applianceList.innerText = appliance.appliance;
+    document.querySelector('.appliance-list').appendChild(applianceList);
   }
 
   createUstensilsList(ustensils) {
-    ustensils.recipes.forEach((Element) => {
+    ustensils.ustensils.forEach((Element) => {
       const ustensilsList = document.createElement('div');
-      ustensilsList.innerText = Element.ustensils;
+      ustensilsList.innerText = Element;
       document.querySelector('.ustensils-list').appendChild(ustensilsList);
     });
   }
@@ -111,7 +107,7 @@ class App {
       // boucle pour importer les données dans le button
       template.createIngredientList(data);
       template.createApplianceList(data);
-      // template.createUstensilsList(data);
+      template.createUstensilsList(data);
     }
   }
 }
