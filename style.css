@@ -133,6 +133,14 @@ ul {
   background-color: #3282f7;
 }
 
+.appliance-list {
+  background-color: #68d9a4;
+}
+
+.ustensils-list {
+  background-color: #ed6454;
+}
+
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

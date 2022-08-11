@@ -12,39 +12,41 @@ console.log(ingredientListElements);
 function resetButton(typeButton) {
   switch (typeButton) {
     case 'ingredients':
-      if (buttonAppliance.classList.contains('big-btn')) {
-        buttonAppliance.click();
-        // applianceList.classList.remove('three-columns');
+      if (buttonAppliance.classList.contains('show')) {
+        buttonIngredients.click();
+        applianceList.classList.remove('three-columns');
       }
       if (buttonUstensils.classList.contains('big-btn')) {
         buttonUstensils.click();
-        // ustensilsList.classList.remove('three-columns');
+        ustensilsList.classList.remove('three-columns');
+      }
+      // si l'utilisateur clique en dehors du bouton, on reset le bouton
+      if (buttonIngredients != document.activeElement) {
+        buttonIngredients.click();
       }
 
       break;
 
     case 'appliance':
-      applianceList.classList.remove('three-columns', 'show');
-      if (buttonUstensils.classList.contains('big-btn')) {
+      if (buttonUstensils.classList.contains('show')) {
         buttonUstensils.click();
-        // ustensilsList.classList.remove('three-columns');
+        ustensilsList.classList.remove('three-columns');
       }
       if (buttonIngredients.classList.contains('big-btn')) {
         buttonIngredients.click();
-        // ingredientList.classList.remove('three-columns');
+        ingredientList.classList.remove('three-columns');
       }
 
       break;
 
     case 'ustensils':
-      ustensilsList.classList.remove('three-columns', 'show');
-      if (buttonAppliance.classList.contains('big-btn')) {
+      if (buttonAppliance.classList.contains('show')) {
         buttonAppliance.click();
-        // applianceList.classList.remove('three-columns');
+        applianceList.classList.remove('three-columns');
       }
       if (buttonIngredients.classList.contains('big-btn')) {
         buttonIngredients.click();
-        // ingredientList.classList.remove('three-columns');
+        ingredientList.classList.remove('three-columns');
       }
 
       break;
@@ -59,6 +61,11 @@ buttonIngredients.addEventListener('click', (event) => {
   buttonIngredients.classList.toggle('big-btn');
 });
 
+ingredientList.addEventListener('click', (event) => {
+  ingredientList.classList.toggle('three-columns');
+  buttonIngredients.classList.toggle('big-btn');
+});
+
 buttonAppliance.addEventListener('click', (event) => {
   resetButton('appliance');
   buttonAppliance.value = '';
@@ -66,9 +73,19 @@ buttonAppliance.addEventListener('click', (event) => {
   buttonAppliance.classList.toggle('big-btn');
 });
 
+applianceList.addEventListener('click', (event) => {
+  applianceList.classList.toggle('three-columns');
+  buttonAppliance.classList.toggle('big-btn');
+});
+
 buttonUstensils.addEventListener('click', (event) => {
   resetButton('ustensils');
   buttonUstensils.value = '';
+  ustensilsList.classList.toggle('three-columns');
+  buttonUstensils.classList.toggle('big-btn');
+});
+
+ustensilsList.addEventListener('click', (event) => {
   ustensilsList.classList.toggle('three-columns');
   buttonUstensils.classList.toggle('big-btn');
 });
