@@ -112,15 +112,5 @@ class App {
   }
 }
 
-// function uniqueWord(word) {
-//   let arr = [];
-//   word.forEach(element => {
-//     if(!arr.includes(element)){
-//        arr.push(element);
-//     }
-//   });
-//   return arr;
-// }
-
 const app = new App();
 app.main();

@@ -6,9 +6,6 @@ const ingredientList = document.querySelector('.ingredient-list');
 const applianceList = document.querySelector('.appliance-list');
 const ustensilsList = document.querySelector('.ustensils-list');
 
-const ingredientListElements = ingredientList.querySelectorAll('div');
-console.log(ingredientListElements);
-
 function resetButton(typeButton) {
   switch (typeButton) {
     case 'ingredients':
