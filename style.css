@@ -115,7 +115,7 @@ ul {
   background-color: grey;
 }
 
-.btn {
+.btn-secondary {
   width: 150px;
   padding: 1rem 1rem;
   border-radius: 5px;
@@ -129,15 +129,27 @@ ul {
   width: 600px;
 }
 
-.ingredient-list {
+.tags-container {
+  gap: 1rem;
+}
+
+.tag-content {
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ingredient-list,
+.blue {
   background-color: #3282f7;
 }
 
-.appliance-list {
+.appliance-list,
+.green {
   background-color: #68d9a4;
 }
 
-.ustensils-list {
+.ustensils-list,
+.orange {
   background-color: #ed6454;
 }
 
