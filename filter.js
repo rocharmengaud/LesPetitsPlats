@@ -1,16 +1,3 @@
-class Api {
-  constructor(url) {
-    this.url = url;
-  }
-
-  // méthode asynchrone pour initialiser la recupération des données du json
-  async get() {
-    const httpResponse = await fetch(this.url);
-    const httpData = await httpResponse.json();
-    return httpData;
-  }
-}
-
 import { getData } from './data.js';
 const recipesAll = await getData();
 
@@ -96,61 +83,34 @@ Array.from(ustensilsListElements).forEach(function (element) {
   });
 });
 
-// Object.entries(recipesAll).forEach(([clé, valeur]) => console.log(clé, valeur));
-console.log(Object.values(recipesAll));
+function collectIngredients(recipe) {
+  const ingredientsAll = new Set();
 
-// recipesAll.forEach((element) => {});
-
-class recipesData {
-  constructor(data) {
-    // Classe constructeur pour pouvoir utiliser les clés au sein du json
-    this.data = data;
-    // des qu'on crée un constructor, on utilisera this
+  for (let item of recipe.ingredients) {
+    ingredientsAll.add(item.ingredient.toLowerCase());
   }
-
-  parseJson() {
-    console.log(this.data.name);
-  }
+  // console.log(ingredients);
+  return [...ingredientsAll];
 }
 
 function generalFilter(userInput) {
-  // console.log(userInput, recipesAll);
-
   let recipesFiltered = []; // array of recipes filtered by search terms
 
   /* filter recipes with search terms */
   if (userInput.length > 2) {
-    recipesFiltered = recipesAll.filter(function (recipe) {
+    recipesFiltered = recipesAll.recipes.filter((recipe) => {
+      // console.log(recipe.name, recipe.description);
       return (
-        recipe.title.toLowerCase().includes(userInput.toLowerCase()) ||
+        recipe.name.toLowerCase().includes(userInput.toLowerCase()) ||
         recipe.description.toLowerCase().includes(userInput.toLowerCase()) ||
-        recipe.ingredients.some(function (ingredient) {
-          ingredient.toLowerCase().includes(userInput.toLowerCase());
-        })
+        collectIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(userInput.toLowerCase()))
       );
     });
   } else {
-    recipesFiltered = recipesAll;
+    recipesFiltered = recipesAll.recipes;
   }
+  console.log('Recipes filtered with search filter: ', recipesFiltered);
 }
 
-generalFilter(searchbarValue);
-
-class App {
-  constructor() {
-    this.fullData = new Api('data/recipes.json');
-  }
-
-  async main() {
-    const json = await this.fullData.get();
-
-    for (const data of json.recipes) {
-      // json.recipes = json.la clé.dans le json (ici "recipes")
-      const template = new recipesData(data);
-      template.parseJson;
-    }
-  }
-}
-
-const app = new App();
-app.main();
+const filter = generalFilter(searchbarValue);
+console.log(filter);

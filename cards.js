@@ -1,4 +1,4 @@
-class Api {
+export class Api {
   constructor(url) {
     this.url = url;
   }
@@ -92,7 +92,7 @@ class recipeCard {
   }
 }
 
-class App {
+export class App {
   constructor() {
     this.fullData = new Api('data/recipes.json');
   }
