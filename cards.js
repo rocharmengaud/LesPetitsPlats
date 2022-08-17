@@ -11,7 +11,7 @@ export class Api {
   }
 }
 
-class recipeCard {
+export class recipeCard {
   constructor(card) {
     // Classe constructeur pour pouvoir utiliser les clés au sein du json
     this.card = card;
