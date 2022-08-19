@@ -100,15 +100,24 @@ export class App {
   async main() {
     const json = await this.fullData.get();
 
+    const list1 = [];
+    const list2 = [];
+    const list3 = [];
+
     for (const data of json.recipes) {
       // json.recipes = json.la clé.dans le json (ici "recipes")
-      const template = new recipeCard(data);
-      template.createRecipeCard();
+      // const template = new recipeCard(data);
+      // template.createRecipeCard();
       // boucle pour importer les données dans le button
-      template.createIngredientList(data);
-      template.createApplianceList(data);
-      template.createUstensilsList(data);
+      // template.createIngredientList(data);
+      // template.createApplianceList(data);
+      // template.createUstensilsList(data);
+
+      data.ingredients.forEach((ingredient) => {
+        list1.push(ingredient.ingredient);
+      });
     }
+    console.log(list1);
   }
 }
 

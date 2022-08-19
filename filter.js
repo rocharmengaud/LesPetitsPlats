@@ -18,6 +18,7 @@ searchbarInput.addEventListener('change', function (event) {
 /* addeventlistener on insert tag element */
 Array.from(ingredientListElements).forEach(function (element) {
   const tagId = element.innerHTML;
+
   element.addEventListener('click', function (event) {
     const ingredientTag = document.createElement('button');
     ingredientTag.className = 'btn btn-primary tag blue';
@@ -32,18 +33,18 @@ Array.from(ingredientListElements).forEach(function (element) {
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
     generalFilter();
+
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
       generalFilter();
     });
-
-    ingredientTag.addEventListener('click', function (event) {});
   });
 });
 
 Array.from(applianceListElements).forEach(function (element) {
   const tagId = element.innerHTML;
+
   element.addEventListener('click', function (event) {
     const applianceTag = document.createElement('button');
     applianceTag.className = 'btn btn-primary tag green';
@@ -57,18 +58,19 @@ Array.from(applianceListElements).forEach(function (element) {
     applianceTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
+    generalFilter();
 
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
+      generalFilter();
     });
-
-    applianceTag.addEventListener('click', function (event) {});
   });
 });
 
 Array.from(ustensilsListElements).forEach(function (element) {
   const tagId = element.innerHTML;
+
   element.addEventListener('click', function (event) {
     const ustensilsTag = document.createElement('button');
     ustensilsTag.className = 'btn btn-primary tag orange';
@@ -87,18 +89,16 @@ Array.from(ustensilsListElements).forEach(function (element) {
       const tag = document.getElementById(tagId);
       tag.remove();
     });
-
-    ustensilsTag.addEventListener('click', function (event) {});
   });
 });
 
-function collectIngredients(recipe) {
+function arrayIngredients(recipe) {
   const ingredientsAll = new Set();
 
   for (let item of recipe.ingredients) {
     ingredientsAll.add(item.ingredient.toLowerCase());
   }
-  // console.log(ingredients);
+
   return [...ingredientsAll];
 }
 
@@ -114,7 +114,7 @@ function generalFilter() {
       return (
         recipe.name.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         recipe.description.toLowerCase().includes(searchbarValue.toLowerCase()) ||
-        collectIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
+        arrayIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
       );
     });
   } else {
@@ -126,7 +126,7 @@ function generalFilter() {
   let tagsSelected = Array.from(document.querySelectorAll('.tag'));
   console.log(tagsSelected);
   tagsSelected.forEach(function (tag) {
-    // blue = ingredients | green = appareils | orange = ustensiles
+    // blue = ingredients | green = appliance | orange = ustensils
     if (tag.classList.contains('blue')) {
       let ingredientFiltered = [];
       recipesFiltered.forEach((el) => {
@@ -167,6 +167,3 @@ function generalFilter() {
     template.createUstensilsList(data);
   });
 }
-
-const filter = generalFilter();
-console.log(filter);
