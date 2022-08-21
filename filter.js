@@ -133,6 +133,7 @@ function generalFilter() {
         el.ingredients.forEach((el2) => {
           if (el2.ingredient.toLowerCase() === tag.innerText.toLowerCase()) {
             ingredientFiltered.push(el);
+            console.log(ingredientFiltered);
           }
         });
       });
@@ -140,16 +141,20 @@ function generalFilter() {
     }
 
     if (tag.classList.contains('green')) {
-      recipesFiltered.filter(function (recipe) {
-        return recipe.appliance.includes(tag.innerText);
+      let ingredientFiltered = [];
+      recipesFiltered.forEach((el) => {
+        if (el.appliance.toLowerCase() === tag.innerText.toLowerCase()) {
+          ingredientFiltered.push(el);
+        }
       });
+      recipesFiltered = ingredientFiltered;
     }
 
-    if (tag.classList.contains('orange')) {
-      recipesFiltered.filter(function (recipe) {
-        return recipe.ustenstils.includes(tag.innerText);
-      });
-    }
+    // if (tag.classList.contains('orange')) {
+    //   recipesFiltered.filter(function (recipe) {
+    //     return recipe.ustenstils.includes(tag.innerText);
+    //   });
+    // }
   });
 
   console.log('Recipes filtered with tags: ', recipesFiltered);

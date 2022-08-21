@@ -92,7 +92,6 @@ export class App {
       // json.recipes = json.la clé.dans le json (ici "recipes")
       const template = new recipeCard(data);
       template.createRecipeCard();
-      // template.createApplianceList(data);
 
       // Importation des listes
       data.ingredients.forEach((ingredient) => {
