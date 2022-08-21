@@ -69,11 +69,11 @@ export class recipeCard {
     cardInfo.appendChild(cardDescription);
   }
 
-  createApplianceList(appliance) {
-    const applianceList = document.createElement('div');
-    applianceList.innerText = appliance.appliance;
-    document.querySelector('.appliance-list').appendChild(applianceList);
-  }
+  // createApplianceList(appliance) {
+  //   const applianceList = document.createElement('div');
+  //   applianceList.innerText = appliance.appliance;
+  //   document.querySelector('.appliance-list').appendChild(applianceList);
+  // }
 }
 
 export class App {
@@ -92,9 +92,9 @@ export class App {
       // json.recipes = json.la clé.dans le json (ici "recipes")
       const template = new recipeCard(data);
       template.createRecipeCard();
-      template.createApplianceList(data);
+      // template.createApplianceList(data);
 
-      // boucle pour importer les listes
+      // Importation des listes
       data.ingredients.forEach((ingredient) => {
         ingredientList.push(ingredient.ingredient);
       });
@@ -102,6 +102,8 @@ export class App {
       data.ustensils.forEach((ustensils) => {
         ustensilsList.push(ustensils);
       });
+
+      applianceList.push(data.appliance);
     }
     // remove duplicates
     const uniqueIngredientList = Array.from(new Set(ingredientList));
@@ -116,6 +118,13 @@ export class App {
       const ustensilsElement = document.createElement('div');
       ustensilsElement.innerText = element;
       document.querySelector('.ustensils-list').appendChild(ustensilsElement);
+    });
+
+    const uniqueApplianceList = Array.from(new Set(applianceList));
+    uniqueApplianceList.forEach((element) => {
+      const applianceElement = document.createElement('div');
+      applianceElement.innerText = element;
+      document.querySelector('.appliance-list').appendChild(applianceElement);
     });
   }
 }
