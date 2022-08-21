@@ -162,8 +162,8 @@ function generalFilter() {
     const template = new recipeCard(data);
     template.createRecipeCard();
     // boucle pour importer les données dans le button
-    template.createIngredientList(data);
+    // template.createIngredientList(data);
     template.createApplianceList(data);
-    template.createUstensilsList(data);
+    // template.createUstensilsList(data);
   });
 }
