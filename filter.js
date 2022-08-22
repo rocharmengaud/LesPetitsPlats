@@ -88,6 +88,7 @@ Array.from(ustensilsListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
+      generalFilter();
     });
   });
 });
@@ -169,7 +170,6 @@ function generalFilter() {
   });
 
   console.log('Recipes filtered with tags: ', recipesFiltered);
-
   /* add recipes to the page */
   // addRecipesToPage(recipesFiltered);
   cardsGrid.innerHTML = '';

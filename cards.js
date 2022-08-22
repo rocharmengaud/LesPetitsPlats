@@ -68,12 +68,6 @@ export class recipeCard {
     cardInfo.appendChild(cardIngredients);
     cardInfo.appendChild(cardDescription);
   }
-
-  // createApplianceList(appliance) {
-  //   const applianceList = document.createElement('div');
-  //   applianceList.innerText = appliance.appliance;
-  //   document.querySelector('.appliance-list').appendChild(applianceList);
-  // }
 }
 
 export class App {

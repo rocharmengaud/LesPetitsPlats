@@ -10,10 +10,10 @@ function resetButton(typeButton) {
   switch (typeButton) {
     case 'ingredients':
       if (buttonAppliance.classList.contains('show')) {
-        buttonIngredients.click();
+        buttonAppliance.click();
         applianceList.classList.remove('three-columns');
       }
-      if (buttonUstensils.classList.contains('big-btn')) {
+      if (buttonUstensils.classList.contains('show')) {
         buttonUstensils.click();
         ustensilsList.classList.remove('three-columns');
       }
@@ -29,7 +29,7 @@ function resetButton(typeButton) {
         buttonUstensils.click();
         ustensilsList.classList.remove('three-columns');
       }
-      if (buttonIngredients.classList.contains('big-btn')) {
+      if (buttonIngredients.classList.contains('show')) {
         buttonIngredients.click();
         ingredientList.classList.remove('three-columns');
       }
@@ -41,7 +41,7 @@ function resetButton(typeButton) {
         buttonAppliance.click();
         applianceList.classList.remove('three-columns');
       }
-      if (buttonIngredients.classList.contains('big-btn')) {
+      if (buttonIngredients.classList.contains('show')) {
         buttonIngredients.click();
         ingredientList.classList.remove('three-columns');
       }
