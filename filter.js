@@ -84,10 +84,12 @@ Array.from(ustensilsListElements).forEach(function (element) {
     ustensilsTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
+    generalFilter();
 
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
+      generalFilter();
     });
   });
 });
@@ -124,15 +126,17 @@ function generalFilter() {
 
   /* filter recipes with selected tags */
   let tagsSelected = Array.from(document.querySelectorAll('.tag'));
-  console.log(tagsSelected);
-  tagsSelected.forEach(function (tag) {
+
+  tagsSelected.forEach((tag) => {
     // blue = ingredients | green = appliance | orange = ustensils
     if (tag.classList.contains('blue')) {
       let ingredientFiltered = [];
+
       recipesFiltered.forEach((el) => {
         el.ingredients.forEach((el2) => {
           if (el2.ingredient.toLowerCase() === tag.innerText.toLowerCase()) {
             ingredientFiltered.push(el);
+            console.log(ingredientFiltered);
           }
         });
       });
@@ -140,20 +144,33 @@ function generalFilter() {
     }
 
     if (tag.classList.contains('green')) {
-      recipesFiltered.filter(function (recipe) {
-        return recipe.appliance.includes(tag.innerText);
+      let applianceFiltered = [];
+
+      recipesFiltered.forEach((el) => {
+        if (el.appliance.toLowerCase() === tag.innerText.toLowerCase()) {
+          applianceFiltered.push(el);
+        }
       });
+      recipesFiltered = applianceFiltered;
     }
 
     if (tag.classList.contains('orange')) {
-      recipesFiltered.filter(function (recipe) {
-        return recipe.ustenstils.includes(tag.innerText);
+      let ustensilsFiltered = [];
+      recipesFiltered.forEach((el) => {
+        el.ustensils.forEach((el2) => {
+          console.log(el2);
+          if (el2.toLowerCase() === tag.innerText.toLowerCase()) {
+            ustensilsFiltered.push(el);
+          }
+        });
       });
+      recipesFiltered = ustensilsFiltered;
     }
   });
 
-  console.log('Recipes filtered with tags: ', recipesFiltered);
+  // tagReset(recipesFiltered);
 
+  console.log('Recipes filtered with tags: ', recipesFiltered);
   /* add recipes to the page */
   // addRecipesToPage(recipesFiltered);
   cardsGrid.innerHTML = '';
@@ -161,9 +178,9 @@ function generalFilter() {
   recipesFiltered.forEach((data) => {
     const template = new recipeCard(data);
     template.createRecipeCard();
-    // boucle pour importer les données dans le button
-    template.createIngredientList(data);
-    template.createApplianceList(data);
-    template.createUstensilsList(data);
   });
 }
+
+// function tagReset(filteredRecipes) {
+//   if ()
+// }

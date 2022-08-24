@@ -68,28 +68,6 @@ export class recipeCard {
     cardInfo.appendChild(cardIngredients);
     cardInfo.appendChild(cardDescription);
   }
-
-  createIngredientList(ingredients) {
-    ingredients.ingredients.forEach((Element) => {
-      const ingredientList = document.createElement('div');
-      ingredientList.innerText = Element.ingredient;
-      document.querySelector('.ingredient-list').appendChild(ingredientList);
-    });
-  }
-
-  createApplianceList(appliance) {
-    const applianceList = document.createElement('div');
-    applianceList.innerText = appliance.appliance;
-    document.querySelector('.appliance-list').appendChild(applianceList);
-  }
-
-  createUstensilsList(ustensils) {
-    ustensils.ustensils.forEach((Element) => {
-      const ustensilsList = document.createElement('div');
-      ustensilsList.innerText = Element;
-      document.querySelector('.ustensils-list').appendChild(ustensilsList);
-    });
-  }
 }
 
 export class App {
@@ -100,24 +78,47 @@ export class App {
   async main() {
     const json = await this.fullData.get();
 
-    const list1 = [];
-    const list2 = [];
-    const list3 = [];
+    const ingredientList = [];
+    const applianceList = [];
+    const ustensilsList = [];
 
     for (const data of json.recipes) {
       // json.recipes = json.la clé.dans le json (ici "recipes")
-      // const template = new recipeCard(data);
-      // template.createRecipeCard();
-      // boucle pour importer les données dans le button
-      // template.createIngredientList(data);
-      // template.createApplianceList(data);
-      // template.createUstensilsList(data);
+      const template = new recipeCard(data);
+      template.createRecipeCard();
 
+      // Importation des listes
       data.ingredients.forEach((ingredient) => {
-        list1.push(ingredient.ingredient);
+        ingredientList.push(ingredient.ingredient);
       });
+
+      data.ustensils.forEach((ustensils) => {
+        ustensilsList.push(ustensils);
+      });
+
+      applianceList.push(data.appliance);
     }
-    console.log(list1);
+    // remove duplicates
+    const uniqueIngredientList = Array.from(new Set(ingredientList));
+    uniqueIngredientList.forEach((element) => {
+      const ingredientElement = document.createElement('div');
+      ingredientElement.innerText = element;
+      document.querySelector('.ingredient-list').appendChild(ingredientElement);
+    });
+
+    const uniqueUstensilsList = Array.from(new Set(ustensilsList));
+    uniqueUstensilsList.forEach((element) => {
+      const ustensilsElement = document.createElement('div');
+      ustensilsElement.innerText = element;
+      document.querySelector('.ustensils-list').appendChild(ustensilsElement);
+    });
+
+    const uniqueApplianceList = Array.from(new Set(applianceList));
+    uniqueApplianceList.forEach((element) => {
+      const applianceElement = document.createElement('div');
+      applianceElement.innerText = element;
+      document.querySelector('.appliance-list').appendChild(applianceElement);
+    });
   }
 }
 
