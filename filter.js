@@ -155,6 +155,7 @@ function generalFilter() {
     }
 
     if (tag.classList.contains('orange')) {
+<<<<<<< HEAD
       let ustensilsFiltered = [];
       recipesFiltered.forEach((el) => {
         el.ustensils.forEach((el2) => {
@@ -170,6 +171,23 @@ function generalFilter() {
 
   // tagReset(recipesFiltered);
 
+=======
+      console.log('test');
+      let ustensilsFiltered = [];
+
+      // recipesFiltered.forEach((el) => {
+      //   el.ustensils.forEach((el2) => {
+      //     if (el2.ustensils.toLowerCase() === tag.innerText.toLowerCase()) {
+      //       ustensilsFiltered.push(el);
+      //       console.log(ustensilsFiltered);
+      //     }
+      //   });
+      // });
+      // recipesFiltered = ustensilsFiltered;
+    }
+  });
+
+>>>>>>> 9cf8930adc156d3162ba14b0271c31a382eba274
   console.log('Recipes filtered with tags: ', recipesFiltered);
   /* add recipes to the page */
   // addRecipesToPage(recipesFiltered);
