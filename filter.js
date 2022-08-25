@@ -109,7 +109,16 @@ function arrayIngredients(recipe) {
 }
 
 ingredientInput.oninput = (e) => {
-  console.log('test');
+  const inputValue = e.target.value;
+
+  ingredientListElements.forEach((el) => {
+    console.log(el.innerText);
+    if (el.innerText.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) {
+      el.style.display = 'none';
+    } else {
+      el.style.display = 'block';
+    }
+  });
 };
 
 function generalFilter() {
