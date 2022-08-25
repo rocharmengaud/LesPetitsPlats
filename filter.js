@@ -4,6 +4,7 @@ const recipesAll = await getData();
 import { recipeCard } from './cards.js';
 
 const searchbarInput = document.querySelector('#search-recipe');
+const ingredientInput = document.querySelector('#button-ingredients');
 const ingredientListElements = document.querySelectorAll('.ingredient-list div');
 const applianceListElements = document.querySelectorAll('.appliance-list div');
 const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
@@ -37,6 +38,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
+      document.querySelector('.ingredient-list').prepend(element);
       generalFilter();
     });
   });
@@ -63,6 +65,7 @@ Array.from(applianceListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
+      document.querySelector('.appliance-list').prepend(element);
       generalFilter();
     });
   });
@@ -89,6 +92,7 @@ Array.from(ustensilsListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
+      document.querySelector('.ustensils-list').prepend(element);
       generalFilter();
     });
   });
@@ -103,6 +107,10 @@ function arrayIngredients(recipe) {
 
   return [...ingredientsAll];
 }
+
+ingredientInput.oninput = (e) => {
+  console.log('test');
+};
 
 function generalFilter() {
   const searchbarInput = document.querySelector('#search-recipe');
@@ -168,8 +176,6 @@ function generalFilter() {
     }
   });
 
-  // tagReset(recipesFiltered);
-
   console.log('Recipes filtered with tags: ', recipesFiltered);
   /* add recipes to the page */
   // addRecipesToPage(recipesFiltered);
@@ -180,7 +186,3 @@ function generalFilter() {
     template.createRecipeCard();
   });
 }
-
-// function tagReset(filteredRecipes) {
-//   if ()
-// }
