@@ -5,6 +5,8 @@ import { recipeCard } from './cards.js';
 
 const searchbarInput = document.querySelector('#search-recipe');
 const ingredientInput = document.querySelector('#button-ingredients');
+const applianceInput = document.querySelector('#button-appliance');
+const ustensilsInput = document.querySelector('#button-ustensils');
 const ingredientListElements = document.querySelectorAll('.ingredient-list div');
 const applianceListElements = document.querySelectorAll('.appliance-list div');
 const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
@@ -112,11 +114,34 @@ ingredientInput.oninput = (e) => {
   const inputValue = e.target.value;
 
   ingredientListElements.forEach((el) => {
-    console.log(el.innerText);
-    if (el.innerText.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) {
-      el.style.display = 'none';
-    } else {
+    if (el.innerText.toLowerCase().includes(inputValue.toLowerCase())) {
       el.style.display = 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+};
+
+applianceInput.oninput = (e) => {
+  const inputValue = e.target.value;
+
+  applianceListElements.forEach((el) => {
+    if (el.innerText.toLowerCase().includes(inputValue.toLowerCase())) {
+      el.style.display = 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+};
+
+ustensilsInput.oninput = (e) => {
+  const inputValue = e.target.value;
+
+  ustensilsListElements.forEach((el) => {
+    if (el.innerText.toLowerCase().includes(inputValue.toLowerCase())) {
+      el.style.display = 'block';
+    } else {
+      el.style.display = 'none';
     }
   });
 };
