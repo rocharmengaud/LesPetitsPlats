@@ -10,41 +10,42 @@ function resetButton(typeButton) {
   switch (typeButton) {
     case 'ingredients':
       if (buttonAppliance.classList.contains('show')) {
-        buttonAppliance.click();
-        applianceList.classList.remove('three-columns');
+        console.log('test');
+        buttonIngredients.classList.remove('big-btn');
+        ingredientList.classList.remove('three-columns');
       }
-      if (buttonUstensils.classList.contains('show')) {
-        buttonUstensils.click();
-        ustensilsList.classList.remove('three-columns');
-      }
+      // if (buttonUstensils.classList.contains('show')) {
+      //   buttonUstensils.click();
+      //   ustensilsList.classList.remove('three-columns');
+      // }
       // si l'utilisateur clique en dehors du bouton, on reset le bouton
-      if (buttonIngredients != document.activeElement) {
-        buttonIngredients.click();
-      }
+      // if (buttonIngredients != document.activeElement) {
+      //   buttonIngredients.click();
+      // }
 
       break;
 
     case 'appliance':
-      if (buttonUstensils.classList.contains('show')) {
-        buttonUstensils.click();
-        ustensilsList.classList.remove('three-columns');
-      }
-      if (buttonIngredients.classList.contains('show')) {
-        buttonIngredients.click();
-        ingredientList.classList.remove('three-columns');
-      }
+      // if (buttonUstensils.classList.contains('show')) {
+      //   buttonUstensils.click();
+      //   ustensilsList.classList.remove('three-columns');
+      // }
+      // if (buttonIngredients.classList.contains('show')) {
+      //   buttonIngredients.click();
+      //   ingredientList.classList.remove('three-columns');
+      // }
 
       break;
 
     case 'ustensils':
-      if (buttonAppliance.classList.contains('show')) {
-        buttonAppliance.click();
-        applianceList.classList.remove('three-columns');
-      }
-      if (buttonIngredients.classList.contains('show')) {
-        buttonIngredients.click();
-        ingredientList.classList.remove('three-columns');
-      }
+      // if (buttonAppliance.classList.contains('show')) {
+      //   buttonAppliance.click();
+      //   applianceList.classList.remove('three-columns');
+      // }
+      // if (buttonIngredients.classList.contains('show')) {
+      //   buttonIngredients.click();
+      //   ingredientList.classList.remove('three-columns');
+      // }
 
       break;
   }
