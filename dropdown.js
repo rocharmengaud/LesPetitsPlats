@@ -10,9 +10,10 @@ function resetButton(typeButton) {
   switch (typeButton) {
     case 'ingredients':
       if (buttonAppliance.classList.contains('show')) {
-        console.log('test');
         buttonIngredients.classList.remove('big-btn');
         ingredientList.classList.remove('three-columns');
+        buttonUstensils.value = 'Ustensiles';
+        buttonAppliance.value = 'Appareils';
       }
       // if (buttonUstensils.classList.contains('show')) {
       //   buttonUstensils.click();
