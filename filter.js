@@ -1,6 +1,8 @@
+// utilisation de l'import des données du js
 import { getData } from './data.js';
 const recipesAll = await getData();
 
+// import d'une classe provenant d'un autre fichier
 import { recipeCard } from './cards.js';
 
 const searchbarInput = document.querySelector('#search-recipe');
@@ -13,12 +15,12 @@ const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
 const tagsContainer = document.querySelector('.tags-container');
 const cardsGrid = document.querySelector('.cards-grid');
 
-/* addeventlistener on the search input */
+/* addeventlistener sur la barre de recherche générale */
 searchbarInput.addEventListener('change', function (event) {
   generalFilter();
 });
 
-/* addeventlistener on insert tag element */
+/* addeventlistener sur chacun des "tags" que l'utilisateur selectionne */
 Array.from(ingredientListElements).forEach(function (element) {
   const tagId = element.innerHTML;
 
@@ -37,6 +39,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     tagContent.appendChild(closeTag);
     generalFilter();
 
+    // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
@@ -100,6 +103,7 @@ Array.from(ustensilsListElements).forEach(function (element) {
   });
 });
 
+// tableau des ingredients sans doublons en lowercase
 function arrayIngredients(recipe) {
   const ingredientsAll = new Set();
 
@@ -110,6 +114,7 @@ function arrayIngredients(recipe) {
   return [...ingredientsAll];
 }
 
+// tri avec la recherche de l'utilisateur dans l'input du bouton
 ingredientInput.oninput = (e) => {
   const inputValue = e.target.value;
 
@@ -149,9 +154,10 @@ ustensilsInput.oninput = (e) => {
 function generalFilter() {
   const searchbarInput = document.querySelector('#search-recipe');
   const searchbarValue = searchbarInput.value;
-  let recipesFiltered = []; // array of recipes filtered by search terms
+  let recipesFiltered = []; // array qui contiendra les recettes filtrées
 
-  /* filter recipes with search terms */
+  // filtrage avec titre, liste des ingredients, et description de la recette
+  // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
   if (searchbarValue.length > 2) {
     recipesFiltered = recipesAll.recipes.filter((recipe) => {
       // console.log(recipe.name, recipe.description);
@@ -166,7 +172,7 @@ function generalFilter() {
   }
   console.log('Recipes filtered with search filter: ', recipesFiltered);
 
-  /* filter recipes with selected tags */
+  // filtrage avec les tags sélectionnés par l'utilisateur
   let tagsSelected = Array.from(document.querySelectorAll('.tag'));
 
   tagsSelected.forEach((tag) => {
@@ -211,10 +217,9 @@ function generalFilter() {
   });
 
   console.log('Recipes filtered with tags: ', recipesFiltered);
-  /* add recipes to the page */
-  // addRecipesToPage(recipesFiltered);
+  // on vide les cartes avec un innerHtml blanc
   cardsGrid.innerHTML = '';
-
+  // pour ensuitele remplir avec les cartes filtrées
   recipesFiltered.forEach((data) => {
     const template = new recipeCard(data);
     template.createRecipeCard();

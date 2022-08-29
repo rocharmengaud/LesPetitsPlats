@@ -6,6 +6,7 @@ const ingredientList = document.querySelector('.ingredient-list');
 const applianceList = document.querySelector('.appliance-list');
 const ustensilsList = document.querySelector('.ustensils-list');
 
+// utilisation d'un switch pour la cohérence des menus déroulants entre eux
 function resetButton(typeButton) {
   switch (typeButton) {
     case 'ingredients':
@@ -52,7 +53,7 @@ function resetButton(typeButton) {
   }
 }
 
-// l'event listener doit etre placé sur la fleche du dropdown
+// event listener sur chaque bouton pour leur ajouter des classes CSS une fois cliqués
 buttonIngredients.addEventListener('click', (event) => {
   resetButton('ingredients');
   buttonIngredients.value = '';

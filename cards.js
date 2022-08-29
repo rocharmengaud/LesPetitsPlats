@@ -18,6 +18,7 @@ export class recipeCard {
     // des qu'on crée un constructor, on utilisera this
   }
 
+  // Importation de chacune des recettes sous forme de carte
   createRecipeCard() {
     const cardGrid = document.querySelector('.cards-grid');
 
@@ -78,6 +79,7 @@ export class App {
   async main() {
     const json = await this.fullData.get();
 
+    // Creation de 3 tableaux vides de maniere à enlever les doublons par la suite
     const ingredientList = [];
     const applianceList = [];
     const ustensilsList = [];
@@ -98,7 +100,8 @@ export class App {
 
       applianceList.push(data.appliance);
     }
-    // remove duplicates
+
+    // retrait des doublons pour chaque liste
     const uniqueIngredientList = Array.from(new Set(ingredientList));
     uniqueIngredientList.forEach((element) => {
       const ingredientElement = document.createElement('div');
