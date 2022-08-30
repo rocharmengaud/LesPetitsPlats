@@ -5,87 +5,72 @@ const buttonUstensils = document.querySelector('#button-ustensils');
 const ingredientList = document.querySelector('.ingredient-list');
 const applianceList = document.querySelector('.appliance-list');
 const ustensilsList = document.querySelector('.ustensils-list');
+const listArray = [ingredientList, ustensilsList, applianceList];
+const buttonArray = [buttonIngredients, buttonAppliance, buttonUstensils];
 
-// utilisation d'un switch pour la cohérence des menus déroulants entre eux
-function resetButton(typeButton) {
-  switch (typeButton) {
-    case 'ingredients':
-      if (buttonAppliance.classList.contains('show')) {
-        buttonIngredients.classList.remove('big-btn');
-        ingredientList.classList.remove('three-columns');
-        buttonUstensils.value = 'Ustensiles';
-        buttonAppliance.value = 'Appareils';
-      }
-      // if (buttonUstensils.classList.contains('show')) {
-      //   buttonUstensils.click();
-      //   ustensilsList.classList.remove('three-columns');
-      // }
-      // si l'utilisateur clique en dehors du bouton, on reset le bouton
-      // if (buttonIngredients != document.activeElement) {
-      //   buttonIngredients.click();
-      // }
+buttonArray.forEach((button) => {
+  // ici, originalValue n'est pas une variable mais une propriété qu'on ajoute a chacun des boutons
+  button.originalValue = button.value;
+});
 
-      break;
-
-    case 'appliance':
-      // if (buttonUstensils.classList.contains('show')) {
-      //   buttonUstensils.click();
-      //   ustensilsList.classList.remove('three-columns');
-      // }
-      // if (buttonIngredients.classList.contains('show')) {
-      //   buttonIngredients.click();
-      //   ingredientList.classList.remove('three-columns');
-      // }
-
-      break;
-
-    case 'ustensils':
-      // if (buttonAppliance.classList.contains('show')) {
-      //   buttonAppliance.click();
-      //   applianceList.classList.remove('three-columns');
-      // }
-      // if (buttonIngredients.classList.contains('show')) {
-      //   buttonIngredients.click();
-      //   ingredientList.classList.remove('three-columns');
-      // }
-
-      break;
-  }
+// permet de reset les boutons
+function resetButtons(exceptButton, exceptlist) {
+  buttonArray.forEach((button) => {
+    if (button === exceptButton) {
+      return;
+    }
+    button.value = button.originalValue;
+    button.classList.remove('show');
+    button.classList.remove('big-btn');
+  });
+  listArray.forEach((element) => {
+    if (element === exceptlist) {
+      return;
+    }
+    element.classList.remove('show');
+    element.classList.remove('three-columns');
+  });
 }
 
-// event listener sur chaque bouton pour leur ajouter des classes CSS une fois cliqués
+function onButtonClicked(button, list) {
+  resetButtons(button, list);
+  if (button.classList.contains('big-btn')) {
+    // permet de restaurer la value originale
+    button.value = button.originalValue;
+    // permet de perdre le focus sur le click
+    document.activeElement.blur();
+  } else {
+    button.value = '';
+  }
+  list.classList.toggle('three-columns');
+  button.classList.toggle('big-btn');
+}
+
+function onListClicked(button, list) {
+  list.classList.toggle('three-columns');
+  button.classList.toggle('big-btn');
+}
+
 buttonIngredients.addEventListener('click', (event) => {
-  resetButton('ingredients');
-  buttonIngredients.value = '';
-  ingredientList.classList.toggle('three-columns');
-  buttonIngredients.classList.toggle('big-btn');
+  onButtonClicked(buttonIngredients, ingredientList);
 });
 
 ingredientList.addEventListener('click', (event) => {
-  ingredientList.classList.toggle('three-columns');
-  buttonIngredients.classList.toggle('big-btn');
+  onListClicked(buttonIngredients, ingredientList);
 });
 
 buttonAppliance.addEventListener('click', (event) => {
-  resetButton('appliance');
-  buttonAppliance.value = '';
-  applianceList.classList.toggle('three-columns');
-  buttonAppliance.classList.toggle('big-btn');
+  onButtonClicked(buttonAppliance, applianceList);
 });
 
 applianceList.addEventListener('click', (event) => {
-  applianceList.classList.toggle('three-columns');
-  buttonAppliance.classList.toggle('big-btn');
+  onListClicked(buttonAppliance, applianceList);
 });
 
 buttonUstensils.addEventListener('click', (event) => {
-  resetButton('ustensils');
-  buttonUstensils.value = '';
-  ustensilsList.classList.toggle('three-columns');
-  buttonUstensils.classList.toggle('big-btn');
+  onButtonClicked(buttonUstensils, ustensilsList);
 });
 
 ustensilsList.addEventListener('click', (event) => {
-  ustensilsList.classList.toggle('three-columns');
-  buttonUstensils.classList.toggle('big-btn');
+  onListClicked(buttonUstensils, ustensilsList);
 });

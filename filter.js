@@ -40,8 +40,8 @@ Array.from(ingredientListElements).forEach(function (element) {
     generalFilter();
 
     // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
+    const tag = document.getElementById(tagId);
     closeTag.addEventListener('click', function (event) {
-      const tag = document.getElementById(tagId);
       tag.remove();
       document.querySelector('.ingredient-list').prepend(element);
       generalFilter();
