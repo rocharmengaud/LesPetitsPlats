@@ -24,6 +24,7 @@ function resetButtons(exceptButton, exceptlist) {
     button.classList.remove('big-btn');
   });
   listArray.forEach((element) => {
+    console.log(element);
     if (element === exceptlist) {
       return;
     }

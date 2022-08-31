@@ -38,6 +38,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
     generalFilter();
+    // ingredientInput.value = '';
 
     // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
     const tag = document.getElementById(tagId);
@@ -167,10 +168,11 @@ function generalFilter() {
         arrayIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
       );
     });
+    // il va falloir faire une boucle native avec i++ etc
   } else {
     recipesFiltered = recipesAll.recipes;
   }
-  console.log('Recipes filtered with search filter: ', recipesFiltered);
+  // console.log('Recipes filtered with search filter: ', recipesFiltered);
 
   // filtrage avec les tags sélectionnés par l'utilisateur
   let tagsSelected = Array.from(document.querySelectorAll('.tag'));
@@ -184,7 +186,7 @@ function generalFilter() {
         el.ingredients.forEach((el2) => {
           if (el2.ingredient.toLowerCase() === tag.innerText.toLowerCase()) {
             ingredientFiltered.push(el);
-            console.log(ingredientFiltered);
+            // console.log(ingredientFiltered);
           }
         });
       });
@@ -206,7 +208,6 @@ function generalFilter() {
       let ustensilsFiltered = [];
       recipesFiltered.forEach((el) => {
         el.ustensils.forEach((el2) => {
-          console.log(el2);
           if (el2.toLowerCase() === tag.innerText.toLowerCase()) {
             ustensilsFiltered.push(el);
           }
@@ -215,8 +216,9 @@ function generalFilter() {
       recipesFiltered = ustensilsFiltered;
     }
   });
+  // il faut qu'il reste les tags en rapport avec les recettes une fois qu'un tag a été selectionné
 
-  console.log('Recipes filtered with tags: ', recipesFiltered);
+  // console.log('Recipes filtered with tags: ', recipesFiltered);
   // on vide les cartes avec un innerHtml blanc
   cardsGrid.innerHTML = '';
   // pour ensuitele remplir avec les cartes filtrées
