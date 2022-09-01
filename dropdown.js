@@ -75,3 +75,9 @@ buttonUstensils.addEventListener('click', (event) => {
 ustensilsList.addEventListener('click', (event) => {
   onListClicked(buttonUstensils, ustensilsList);
 });
+
+document.querySelector('body').onclick = (e) => {
+  ingredientList.classList.remove('show');
+  applianceList.classList.remove('show');
+  ustensilsList.classList.remove('show');
+};

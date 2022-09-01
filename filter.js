@@ -45,7 +45,8 @@ Array.from(ingredientListElements).forEach(function (element) {
     const tag = document.getElementById(tagId);
     closeTag.addEventListener('click', function (event) {
       tag.remove();
-      document.querySelector('.ingredient-list').prepend(element);
+      // on ré-ajoute la liste complete aprés avoir supprimé le(s) tag(s)
+      new App(recipesAll.recipes).main();
       generalFilter();
     });
   });
@@ -72,7 +73,7 @@ Array.from(applianceListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
-      document.querySelector('.appliance-list').prepend(element);
+      new App(recipesAll.recipes).main();
       generalFilter();
     });
   });
@@ -99,7 +100,7 @@ Array.from(ustensilsListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
-      document.querySelector('.ustensils-list').prepend(element);
+      new App(recipesAll.recipes).main();
       generalFilter();
     });
   });
@@ -160,16 +161,17 @@ function generalFilter() {
   let recipesFiltered = [];
   // filtrage avec titre, liste des ingredients, et description de la recette
   // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
+
   if (searchbarValue.length > 2) {
-    recipesFiltered = recipesAll.recipes.filter((recipe) => {
-      // console.log(recipe.name, recipe.description);
-      return (
+    for (let recipe of recipesAll.recipes) {
+      if (
         recipe.name.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         recipe.description.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         arrayIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
-      );
-    });
-    // il va falloir faire une boucle native avec i++ etc
+      ) {
+        recipesFiltered.push(recipe);
+      }
+    }
   } else {
     recipesFiltered = recipesAll.recipes;
   }
