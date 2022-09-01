@@ -10,6 +10,7 @@ const buttonArray = [buttonIngredients, buttonAppliance, buttonUstensils];
 
 buttonArray.forEach((button) => {
   // ici, originalValue n'est pas une variable mais une propriété qu'on ajoute a chacun des boutons
+  // custom attribute qui n'appartient pas au DOM
   button.originalValue = button.value;
 });
 
@@ -75,3 +76,9 @@ buttonUstensils.addEventListener('click', (event) => {
 ustensilsList.addEventListener('click', (event) => {
   onListClicked(buttonUstensils, ustensilsList);
 });
+
+document.querySelector('body').onclick = (e) => {
+  ingredientList.classList.remove('show');
+  applianceList.classList.remove('show');
+  ustensilsList.classList.remove('show');
+};

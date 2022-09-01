@@ -45,7 +45,8 @@ Array.from(ingredientListElements).forEach(function (element) {
     const tag = document.getElementById(tagId);
     closeTag.addEventListener('click', function (event) {
       tag.remove();
-      document.querySelector('.ingredient-list').prepend(element);
+      // on ré-ajoute la liste complete aprés avoir supprimé le(s) tag(s)
+      new App(recipesAll.recipes).main();
       generalFilter();
     });
   });
@@ -72,7 +73,7 @@ Array.from(applianceListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
-      document.querySelector('.appliance-list').prepend(element);
+      new App(recipesAll.recipes).main();
       generalFilter();
     });
   });
@@ -99,7 +100,7 @@ Array.from(ustensilsListElements).forEach(function (element) {
     closeTag.addEventListener('click', function (event) {
       const tag = document.getElementById(tagId);
       tag.remove();
-      document.querySelector('.ustensils-list').prepend(element);
+      new App(recipesAll.recipes).main();
       generalFilter();
     });
   });
