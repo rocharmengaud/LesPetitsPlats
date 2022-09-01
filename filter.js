@@ -160,16 +160,17 @@ function generalFilter() {
   let recipesFiltered = [];
   // filtrage avec titre, liste des ingredients, et description de la recette
   // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
+
   if (searchbarValue.length > 2) {
-    recipesFiltered = recipesAll.recipes.filter((recipe) => {
-      // console.log(recipe.name, recipe.description);
-      return (
+    for (let recipe of recipesAll.recipes) {
+      if (
         recipe.name.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         recipe.description.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         arrayIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
-      );
-    });
-    // il va falloir faire une boucle native avec i++ etc
+      ) {
+        recipesFiltered.push(recipe);
+      }
+    }
   } else {
     recipesFiltered = recipesAll.recipes;
   }
