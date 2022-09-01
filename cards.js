@@ -72,20 +72,20 @@ export class recipeCard {
 }
 
 export class App {
-  constructor() {
+  constructor(recipesList) {
     this.fullData = new Api('data/recipes.json');
+    this.recipesList = recipesList;
   }
 
   async main() {
-    const json = await this.fullData.get();
-
     // Creation de 3 tableaux vides de maniere à enlever les doublons par la suite
     const ingredientList = [];
     const applianceList = [];
     const ustensilsList = [];
 
-    for (const data of json.recipes) {
+    for (const data of this.recipesList) {
       // json.recipes = json.la clé.dans le json (ici "recipes")
+      console.log('liste filtrée :' + this.recipesList);
       const template = new recipeCard(data);
       template.createRecipeCard();
 
@@ -102,7 +102,9 @@ export class App {
     }
 
     // retrait des doublons pour chaque liste
+    document.querySelector('.ingredient-list').innerHTML = '';
     const uniqueIngredientList = Array.from(new Set(ingredientList));
+    console.log('ingredients uniques:' + uniqueIngredientList);
     uniqueIngredientList.forEach((element) => {
       const ingredientElement = document.createElement('div');
       ingredientElement.innerText = element;
@@ -125,5 +127,9 @@ export class App {
   }
 }
 
-const app = new App();
+const fullData = new Api('data/recipes.json');
+const json = await fullData.get();
+
+console.log(json.recipes);
+const app = new App(json.recipes);
 app.main();

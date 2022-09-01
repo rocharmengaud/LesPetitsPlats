@@ -3,7 +3,7 @@ import { getData } from './data.js';
 const recipesAll = await getData();
 
 // import d'une classe provenant d'un autre fichier
-import { recipeCard } from './cards.js';
+import { App, recipeCard } from './cards.js';
 
 const searchbarInput = document.querySelector('#search-recipe');
 const ingredientInput = document.querySelector('#button-ingredients');
@@ -191,6 +191,7 @@ function generalFilter() {
         });
       });
       recipesFiltered = ingredientFiltered;
+      new App(recipesFiltered).main();
     }
 
     if (tag.classList.contains('green')) {
