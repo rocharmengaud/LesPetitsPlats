@@ -37,6 +37,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     ingredientTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
+
     generalFilter();
     // ingredientInput.value = '';
 
@@ -155,8 +156,8 @@ ustensilsInput.oninput = (e) => {
 function generalFilter() {
   const searchbarInput = document.querySelector('#search-recipe');
   const searchbarValue = searchbarInput.value;
-  let recipesFiltered = []; // array qui contiendra les recettes filtrées
-
+  // array qui contiendra les recettes filtrées
+  let recipesFiltered = [];
   // filtrage avec titre, liste des ingredients, et description de la recette
   // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
   if (searchbarValue.length > 2) {
@@ -186,7 +187,6 @@ function generalFilter() {
         el.ingredients.forEach((el2) => {
           if (el2.ingredient.toLowerCase() === tag.innerText.toLowerCase()) {
             ingredientFiltered.push(el);
-            // console.log(ingredientFiltered);
           }
         });
       });
