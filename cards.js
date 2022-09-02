@@ -111,14 +111,18 @@ export class App {
       document.querySelector('.ingredient-list').appendChild(ingredientElement);
     });
 
+    document.querySelector('.ustensils-list').innerHTML = '';
     const uniqueUstensilsList = Array.from(new Set(ustensilsList));
+    console.log('ustensiles uniques:' + uniqueUstensilsList);
     uniqueUstensilsList.forEach((element) => {
       const ustensilsElement = document.createElement('div');
       ustensilsElement.innerText = element;
       document.querySelector('.ustensils-list').appendChild(ustensilsElement);
     });
 
+    document.querySelector('.appliance-list').innerHTML = '';
     const uniqueApplianceList = Array.from(new Set(applianceList));
+    console.log('appareils uniques:' + uniqueApplianceList);
     uniqueApplianceList.forEach((element) => {
       const applianceElement = document.createElement('div');
       applianceElement.innerText = element;
@@ -130,6 +134,5 @@ export class App {
 const fullData = new Api('data/recipes.json');
 const json = await fullData.get();
 
-console.log(json.recipes);
 const app = new App(json.recipes);
 app.main();

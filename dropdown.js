@@ -76,6 +76,7 @@ ustensilsList.addEventListener('click', (event) => {
   onListClicked(buttonUstensils, ustensilsList);
 });
 
+// pour supprimer la class show inutile de bootstrap sur les listes
 document.querySelector('body').onclick = (e) => {
   ingredientList.classList.remove('show');
   applianceList.classList.remove('show');

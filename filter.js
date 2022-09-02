@@ -37,9 +37,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     ingredientTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
-
     generalFilter();
-    // ingredientInput.value = '';
 
     // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
     const tag = document.getElementById(tagId);
@@ -205,6 +203,7 @@ function generalFilter() {
         }
       });
       recipesFiltered = applianceFiltered;
+      new App(recipesFiltered).main();
     }
 
     if (tag.classList.contains('orange')) {
@@ -217,9 +216,9 @@ function generalFilter() {
         });
       });
       recipesFiltered = ustensilsFiltered;
+      new App(recipesFiltered).main();
     }
   });
-  // il faut qu'il reste les tags en rapport avec les recettes une fois qu'un tag a été selectionné
 
   // console.log('Recipes filtered with tags: ', recipesFiltered);
   // on vide les cartes avec un innerHtml blanc
