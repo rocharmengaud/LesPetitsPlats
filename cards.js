@@ -85,7 +85,7 @@ export class App {
 
     for (const data of this.recipesList) {
       // json.recipes = json.la clé.dans le json (ici "recipes")
-      console.log('liste filtrée :' + this.recipesList);
+      // console.log('liste filtrée :' + this.recipesList);
       const template = new recipeCard(data);
       template.createRecipeCard();
 
@@ -104,7 +104,7 @@ export class App {
     // retrait des doublons pour chaque liste
     document.querySelector('.ingredient-list').innerHTML = '';
     const uniqueIngredientList = Array.from(new Set(ingredientList));
-    console.log('ingredients uniques:' + uniqueIngredientList);
+    // console.log('ingredients uniques:' + uniqueIngredientList);
     uniqueIngredientList.forEach((element) => {
       const ingredientElement = document.createElement('div');
       ingredientElement.innerText = element;
@@ -113,7 +113,7 @@ export class App {
 
     document.querySelector('.ustensils-list').innerHTML = '';
     const uniqueUstensilsList = Array.from(new Set(ustensilsList));
-    console.log('ustensiles uniques:' + uniqueUstensilsList);
+    // console.log('ustensiles uniques:' + uniqueUstensilsList);
     uniqueUstensilsList.forEach((element) => {
       const ustensilsElement = document.createElement('div');
       ustensilsElement.innerText = element;
@@ -122,7 +122,7 @@ export class App {
 
     document.querySelector('.appliance-list').innerHTML = '';
     const uniqueApplianceList = Array.from(new Set(applianceList));
-    console.log('appareils uniques:' + uniqueApplianceList);
+    // console.log('appareils uniques:' + uniqueApplianceList);
     uniqueApplianceList.forEach((element) => {
       const applianceElement = document.createElement('div');
       applianceElement.innerText = element;
