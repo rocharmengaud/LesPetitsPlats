@@ -159,7 +159,6 @@ function generalFilter() {
   let recipesFiltered = [];
   // filtrage avec titre, liste des ingredients, et description de la recette
   // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
-
   if (searchbarValue.length > 2) {
     recipesFiltered = recipesAll.recipes.filter(function (recipe) {
       return (
