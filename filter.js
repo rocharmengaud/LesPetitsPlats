@@ -161,18 +161,17 @@ function generalFilter() {
   // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
 
   if (searchbarValue.length > 2) {
-    for (let recipe of recipesAll.recipes) {
-      if (
+    recipesFiltered = recipesAll.recipes.filter(function (recipe) {
+      return (
         recipe.name.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         recipe.description.toLowerCase().includes(searchbarValue.toLowerCase()) ||
         arrayIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
-      ) {
-        recipesFiltered.push(recipe);
-      }
-    }
+      );
+    });
   } else {
-    recipesFiltered = recipesAll.recipes;
+    recipesAll.recipes = recipesFiltered;
   }
+
   // console.log('Recipes filtered with search filter: ', recipesFiltered);
 
   // filtrage avec les tags sélectionnés par l'utilisateur
