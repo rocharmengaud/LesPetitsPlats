@@ -169,7 +169,7 @@ function generalFilter() {
       );
     });
   } else {
-    recipesAll.recipes = recipesFiltered;
+    recipesFiltered = recipesAll.recipes;
   }
 
   // console.log('Recipes filtered with search filter: ', recipesFiltered);
