@@ -20,6 +20,8 @@ searchbarInput.addEventListener('change', function (event) {
   generalFilter();
 });
 
+let TAGS = [];
+
 /* addeventlistener sur chacun des "tags" que l'utilisateur selectionne */
 Array.from(ingredientListElements).forEach(function (element) {
   const tagId = element.innerHTML;
@@ -37,6 +39,9 @@ Array.from(ingredientListElements).forEach(function (element) {
     ingredientTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
+    TAGS.push(element.textContent);
+    console.log(TAGS);
+
     generalFilter();
 
     // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
