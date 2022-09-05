@@ -167,6 +167,7 @@ function generalFilter() {
         arrayIngredients(recipe).forEach((ingredient) => ingredient.toLowerCase().includes(searchbarValue.toLowerCase()))
       );
     });
+    new App(recipesFiltered).main();
   } else {
     recipesFiltered = recipesAll.recipes;
   }
