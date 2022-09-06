@@ -102,7 +102,7 @@ export class App {
     }
 
     // retrait des doublons pour chaque liste
-    document.querySelector('.ingredient-list').innerHTML = '';
+    // document.querySelector('.ingredient-list').innerHTML = '';
     const uniqueIngredientList = Array.from(new Set(ingredientList));
     // console.log('ingredients uniques:' + uniqueIngredientList);
     uniqueIngredientList.forEach((element) => {
@@ -111,7 +111,7 @@ export class App {
       document.querySelector('.ingredient-list').appendChild(ingredientElement);
     });
 
-    document.querySelector('.ustensils-list').innerHTML = '';
+    // document.querySelector('.ustensils-list').innerHTML = '';
     const uniqueUstensilsList = Array.from(new Set(ustensilsList));
     // console.log('ustensiles uniques:' + uniqueUstensilsList);
     uniqueUstensilsList.forEach((element) => {
@@ -120,7 +120,7 @@ export class App {
       document.querySelector('.ustensils-list').appendChild(ustensilsElement);
     });
 
-    document.querySelector('.appliance-list').innerHTML = '';
+    // document.querySelector('.appliance-list').innerHTML = '';
     const uniqueApplianceList = Array.from(new Set(applianceList));
     // console.log('appareils uniques:' + uniqueApplianceList);
     uniqueApplianceList.forEach((element) => {

@@ -20,8 +20,6 @@ searchbarInput.addEventListener('change', function (event) {
   generalFilter();
 });
 
-let TAGS = [];
-
 /* addeventlistener sur chacun des "tags" que l'utilisateur selectionne */
 Array.from(ingredientListElements).forEach(function (element) {
   const tagId = element.innerHTML;
@@ -35,12 +33,11 @@ Array.from(ingredientListElements).forEach(function (element) {
     const closeTag = document.createElement('img');
     closeTag.src = './assets/x-circle.svg';
     closeTag.className = 'close-tag';
+    console.log(tagsContainer.children);
     tagsContainer.appendChild(ingredientTag);
     ingredientTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
-    TAGS.push(element.textContent);
-    console.log(TAGS);
 
     generalFilter();
 
