@@ -1,5 +1,6 @@
 import { getData } from './data.js';
 const recipesAll = await getData();
+
 let tagIngredients = [
   {
     ingredient: 'Lait de coco',
@@ -49,11 +50,11 @@ function refreshTagIngredientsElement(ingredients) {
   }
 }
 
-const ingredients = getIngredients(recipesAll.recipes);
-const ingredientListElements = document.querySelectorAll('.ingredient-list div');
-const applianceListElements = document.querySelectorAll('.appliance-list div');
-const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
-console.log(ingredientListElements);
+// const ingredients = getIngredients(recipesAll.recipes);
+// const ingredientListElements = document.querySelectorAll('.ingredient-list div');
+// const applianceListElements = document.querySelectorAll('.appliance-list div');
+// const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
+// console.log(ingredientListElements);
 
 Array.from(ingredientListElements).forEach(function (element) {
   element.addEventListener('click', function (event) {

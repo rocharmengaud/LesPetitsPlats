@@ -76,7 +76,6 @@ export class App {
     this.fullData = new Api('data/recipes.json');
     this.recipesList = recipesList;
   }
-
   async main() {
     // Creation de 3 tableaux vides de maniere à enlever les doublons par la suite
     const ingredientList = [];
@@ -102,7 +101,7 @@ export class App {
     }
 
     // retrait des doublons pour chaque liste
-    // document.querySelector('.ingredient-list').innerHTML = '';
+    document.querySelector('.ingredient-list').innerHTML = '';
     const uniqueIngredientList = Array.from(new Set(ingredientList));
     // console.log('ingredients uniques:' + uniqueIngredientList);
     uniqueIngredientList.forEach((element) => {
