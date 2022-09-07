@@ -1,14 +1,7 @@
 import { getData } from './data.js';
 const recipesAll = await getData();
 
-let tagIngredients = [
-  {
-    ingredient: 'Lait de coco',
-    quantity: 400,
-    unit: 'ml',
-  },
-];
-const tagsContainer = document.querySelector('.tags-container');
+let tagIngredients = [];
 
 function getIngredients(recipes) {
   let ingredients = [];
@@ -50,15 +43,37 @@ function refreshTagIngredientsElement(ingredients) {
   }
 }
 
-// const ingredients = getIngredients(recipesAll.recipes);
-// const ingredientListElements = document.querySelectorAll('.ingredient-list div');
-// const applianceListElements = document.querySelectorAll('.appliance-list div');
-// const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
+function refreshIngredientsElement(ingredients, tagIngredients) {
+  // il faut l'inverse de tagIngredients : on veut pas les tags selectionnés mais tout le reste
+}
+
+// refreshIngredientsElement(ingredients, tagIngredients);
+
+function toObject(arr) {
+  var obj = {};
+  for (var i = 0; i < arr.length; ++i) {
+    const key = arr[i].ingredient;
+    // console.log(key);
+    obj[key] = arr[i];
+  }
+  return obj;
+}
+
+const ingredients = getIngredients(recipesAll.recipes);
+
+const ingredientsByName = toObject(ingredients);
+// console.log(toObject(ingredients));
+
+const applianceListElements = document.querySelectorAll('.appliance-list div');
+const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
+const ingredientListElements = document.querySelectorAll('.ingredient-list div');
+const tagsContainer = document.querySelector('.tags-container');
+// console.log(ingredients);
 // console.log(ingredientListElements);
 
 Array.from(ingredientListElements).forEach(function (element) {
   element.addEventListener('click', function (event) {
-    // tagIngredients = [???]
+    tagIngredients.push(ingredientsByName[element.innerText]);
     refreshTagIngredientsElement(tagIngredients);
   });
 });
