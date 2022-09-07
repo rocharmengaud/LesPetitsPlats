@@ -13,6 +13,9 @@ const ingredientListElements = document.querySelectorAll('.ingredient-list div')
 const applianceListElements = document.querySelectorAll('.appliance-list div');
 const ustensilsListElements = document.querySelectorAll('.ustensils-list div');
 const tagsContainer = document.querySelector('.tags-container');
+const buttonIngredients = document.querySelector('#button-ingredients');
+const buttonAppliance = document.querySelector('#button-appliance');
+const buttonUstensils = document.querySelector('#button-ustensils');
 const cardsGrid = document.querySelector('.cards-grid');
 
 /* addeventlistener sur la barre de recherche générale */
@@ -38,7 +41,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     ingredientTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
-
+    buttonIngredients.value = 'Ingrédients';
     generalFilter();
 
     // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
@@ -68,6 +71,7 @@ Array.from(applianceListElements).forEach(function (element) {
     applianceTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
+    buttonAppliance.value = 'Appareils';
     generalFilter();
 
     closeTag.addEventListener('click', function (event) {
@@ -95,6 +99,7 @@ Array.from(ustensilsListElements).forEach(function (element) {
     ustensilsTag.appendChild(tagContent);
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
+    buttonUstensils.value = 'Ustensiles';
     generalFilter();
 
     closeTag.addEventListener('click', function (event) {
