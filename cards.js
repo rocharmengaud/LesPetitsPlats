@@ -10,7 +10,6 @@ export class Api {
     return httpData;
   }
 }
-
 export class recipeCard {
   constructor(card) {
     // Classe constructeur pour pouvoir utiliser les clés au sein du json
@@ -73,7 +72,7 @@ export class recipeCard {
 
 export class App {
   constructor(recipesList) {
-    this.fullData = new Api('data/recipes.json');
+    // this.fullData = new Api('data/recipes.json');
     this.recipesList = recipesList;
   }
   async main() {
@@ -101,7 +100,7 @@ export class App {
     }
 
     // retrait des doublons pour chaque liste
-    // document.querySelector('.ingredient-list').innerHTML = '';
+    document.querySelector('.ingredient-list').innerHTML = '';
     const uniqueIngredientList = Array.from(new Set(ingredientList));
     // console.log('ingredients uniques:' + uniqueIngredientList);
     uniqueIngredientList.forEach((element) => {

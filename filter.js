@@ -42,6 +42,7 @@ Array.from(ingredientListElements).forEach(function (element) {
     tagContent.appendChild(element);
     tagContent.appendChild(closeTag);
     buttonIngredients.value = 'Ingrédients';
+
     generalFilter();
 
     // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
