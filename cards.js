@@ -1,3 +1,5 @@
+import { getData } from './data.js';
+const recipesAll = await getData();
 export class Api {
   constructor(url) {
     this.url = url;
@@ -129,8 +131,5 @@ export class App {
   }
 }
 
-const fullData = new Api('data/recipes.json');
-const json = await fullData.get();
-
-const app = new App(json.recipes);
+const app = new App(recipesAll.recipes);
 app.main();
