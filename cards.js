@@ -102,7 +102,7 @@ export class App {
     }
 
     // retrait des doublons pour chaque liste
-    document.querySelector('.ingredient-list').innerHTML = '';
+    // document.querySelector('.ingredient-list').innerHTML = '';
     const uniqueIngredientList = Array.from(new Set(ingredientList));
     // console.log('ingredients uniques:' + uniqueIngredientList);
     uniqueIngredientList.forEach((element) => {
