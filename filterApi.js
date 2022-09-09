@@ -167,14 +167,14 @@ function main(recipesFiltered) {
       }
     });
   };
+
+  /* addeventlistener sur la barre de recherche générale */
+  searchbarInput.addEventListener('change', function (event) {
+    generalFilter(recipesFiltered);
+  });
 }
 
 main(recipesAll.recipes);
-
-/* addeventlistener sur la barre de recherche générale */
-searchbarInput.addEventListener('change', function (event) {
-  generalFilter();
-});
 
 function ingredientsListener(list) {
   Array.from(list).forEach(function (element) {
