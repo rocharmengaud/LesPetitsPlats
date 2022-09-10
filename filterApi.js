@@ -297,6 +297,7 @@ function generalFilter() {
     main(recipesFiltered);
   } else {
     recipesFiltered = recipesAll.recipes;
+    alert('Veuillez au moins taper 3 caractères');
   }
 
   // console.log('Recipes filtered with search filter: ', recipesFiltered);
