@@ -75,8 +75,6 @@ function main(recipesFiltered) {
   const ustensilsList = [];
 
   for (const data of recipesFiltered) {
-    // json.recipes = json.la clé.dans le json (ici "recipes")
-    // console.log('liste filtrée :' + this.recipesList);
     const template = new recipeCard(data);
     template.createRecipeCard();
 
@@ -95,37 +93,34 @@ function main(recipesFiltered) {
   // retrait des doublons pour chaque liste
   document.querySelector('.ingredient-list').innerHTML = '';
   const uniqueIngredientList = Array.from(new Set(ingredientList));
-  // console.log('ingredients uniques:' + uniqueIngredientList);
+
   uniqueIngredientList.forEach((element) => {
     const ingredientElement = document.createElement('div');
     ingredientElement.innerText = element;
     document.querySelector('.ingredient-list').appendChild(ingredientElement);
   });
-
   const newIngredientList = document.querySelectorAll('.ingredient-list div');
   ingredientsListener(newIngredientList);
 
   document.querySelector('.ustensils-list').innerHTML = '';
   const uniqueUstensilsList = Array.from(new Set(ustensilsList));
-  // console.log('ustensiles uniques:' + uniqueUstensilsList);
+
   uniqueUstensilsList.forEach((element) => {
     const ustensilsElement = document.createElement('div');
     ustensilsElement.innerText = element;
     document.querySelector('.ustensils-list').appendChild(ustensilsElement);
   });
-
   const newUstensilstList = document.querySelectorAll('.ustensils-list div');
   ustensilsListener(newUstensilstList);
 
   document.querySelector('.appliance-list').innerHTML = '';
   const uniqueApplianceList = Array.from(new Set(applianceList));
-  // console.log('appareils uniques:' + uniqueApplianceList);
+
   uniqueApplianceList.forEach((element) => {
     const applianceElement = document.createElement('div');
     applianceElement.innerText = element;
     document.querySelector('.appliance-list').appendChild(applianceElement);
   });
-
   const newApplianceList = document.querySelectorAll('.appliance-list div');
   applianceListener(newApplianceList);
 
@@ -300,8 +295,6 @@ function generalFilter() {
     alert('Veuillez au moins taper 3 caractères');
   }
 
-  // console.log('Recipes filtered with search filter: ', recipesFiltered);
-
   // filtrage avec les tags sélectionnés par l'utilisateur
   let tagsSelected = Array.from(document.querySelectorAll('.tag'));
 
@@ -347,7 +340,6 @@ function generalFilter() {
     }
   });
 
-  // console.log('Recipes filtered with tags: ', recipesFiltered);
   // on vide les cartes avec un innerHtml blanc
   cardsGrid.innerHTML = '';
   // pour ensuitele remplir avec les cartes filtrées
