@@ -29,7 +29,7 @@
           <div class="elements-container">
             <input type="text" placeholder="Rechercher une recette" id="search-recipe" />
             <a href="#">
-              <img id="icon" src="assets/magnifying-glass-solid.svg" alt="Magnifying glass" />
+              <img id="icon" class="submit-button" src="assets/magnifying-glass-solid.svg" alt="Magnifying glass" />
             </a>
           </div>
         </div>
@@ -39,7 +39,7 @@
       <div class="container">
         <div class="tags-container flex"></div>
         <div class="dropdown-buttons">
-          <ul class="dropdown">
+          <div class="dropdown">
             <input
               id="button-ingredients"
               class="btn btn-secondary shadow-none btn-lg dropdown-toggle bg-blue"
@@ -47,13 +47,11 @@
               value="Ingrédients"
               placeholder="Rechercher un ingrédient"
               data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-          </input>
-            <div class="dropdown-menu ingredient-list">
-            </div>
-            </ul>
-          <ul class="dropdown">
+              role="searchbox"
+            />
+            <div class="dropdown-menu ingredient-list"></div>
+          </div>
+          <div class="dropdown">
             <input
               id="button-appliance"
               class="btn btn-secondary shadow-none btn-lg dropdown-toggle bg-green"
@@ -61,13 +59,11 @@
               value="Appareils"
               placeholder="Rechercher un appareil"
               data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-          </input>
-            <div class="dropdown-menu appliance-list">
-            </div>
-            </ul>
-          <ul class="dropdown">
+              role="searchbox"
+            />
+            <div class="dropdown-menu appliance-list"></div>
+          </div>
+          <div class="dropdown">
             <input
               id="button-ustensils"
               class="btn btn-secondary shadow-none btn-lg dropdown-toggle bg-orange"
@@ -75,15 +71,12 @@
               value="Ustensiles"
               placeholder="Rechercher un ustensile"
               data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-          </input>
-            <div class="dropdown-menu ustensils-list">
-            </div>
+              role="searchbox"
+            />
+            <div class="dropdown-menu ustensils-list"></div>
           </div>
-        </ul>
+        </div>
       </div>
-    </div>
     </section>
     <section>
       <div class="container">

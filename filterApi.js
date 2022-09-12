@@ -2,6 +2,7 @@ import { getData } from './data.js';
 const recipesAll = await getData();
 
 const searchbarInput = document.querySelector('#search-recipe');
+const searchbarValue = searchbarInput.value;
 const tagsContainer = document.querySelector('.tags-container');
 const buttonIngredients = document.querySelector('#button-ingredients');
 const buttonAppliance = document.querySelector('#button-appliance');
@@ -292,7 +293,6 @@ function generalFilter() {
     main(recipesFiltered);
   } else {
     recipesFiltered = recipesAll.recipes;
-    alert('Veuillez au moins taper 3 caractères');
   }
 
   // filtrage avec les tags sélectionnés par l'utilisateur
@@ -348,3 +348,25 @@ function generalFilter() {
     template.createRecipeCard();
   });
 }
+
+function showAlert() {
+  const searchbarInput = document.querySelector('#search-recipe');
+  const searchbarValue = searchbarInput.value;
+  console.log(searchbarValue);
+  if (searchbarValue.length <= 2) {
+    alert('Veuillez au moins taper 3 caractères');
+  }
+  return;
+}
+
+const submitButton = document.querySelector('.submit-button');
+
+submitButton.addEventListener('click', (event) => {
+  showAlert();
+});
+
+document.body.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    showAlert();
+  }
+});
