@@ -1,21 +1,20 @@
+// Méthode pour importer des données d'un autre fichier .js
 import { getData } from './data.js';
 const recipesAll = await getData();
 
 const searchbarInput = document.querySelector('#search-recipe');
-const searchbarValue = searchbarInput.value;
 const tagsContainer = document.querySelector('.tags-container');
 const buttonIngredients = document.querySelector('#button-ingredients');
 const buttonAppliance = document.querySelector('#button-appliance');
 const buttonUstensils = document.querySelector('#button-ustensils');
 const cardsGrid = document.querySelector('.cards-grid');
 
+// Création d'une classe pour pouvoir créer les cartes des recettes
 export class recipeCard {
   constructor(card) {
     // Classe constructeur pour pouvoir utiliser les clés au sein du json
     this.card = card;
-    // des qu'on crée un constructor, on utilisera this
   }
-
   // Importation de chacune des recettes sous forme de carte
   createRecipeCard() {
     const cardGrid = document.querySelector('.cards-grid');
@@ -34,6 +33,7 @@ export class recipeCard {
     const cardTitle = document.createElement('div');
     cardTitle.className = 'card-title';
     cardTitle.innerHTML = this.card.name;
+
     const cardTiming = document.createElement('div');
     cardTiming.className = 'card-timing';
     cardTiming.innerHTML = '<img id="clock" src="assets/clock.svg" alt="Clock" /> ' + this.card.time + ' min';
@@ -46,6 +46,7 @@ export class recipeCard {
     this.card.ingredients.forEach((Element) => {
       cardIngredients.innerHTML += '<strong>' + Element.ingredient + ':</strong> ' + Element.quantity + Element.unit + '<br/>';
     });
+
     const cardDescription = document.createElement('div');
     cardDescription.className = 'card-description';
     let description = '';
@@ -70,11 +71,13 @@ export class recipeCard {
 }
 
 function main(recipesFiltered) {
-  // Creation de 3 tableaux vides de maniere à enlever les doublons par la suite
+  // Creation de 3 tableaux vides de maniere à pouvoir enlever les doublons par la suite
   const ingredientList = [];
   const applianceList = [];
   const ustensilsList = [];
 
+  // Creation d'une boucle pour pouvoir créer chacune des cartes de recettes
+  // mais également importer chacune des listes (ingrédients/appareils/ustensiles)
   for (const data of recipesFiltered) {
     const template = new recipeCard(data);
     template.createRecipeCard();
@@ -91,10 +94,10 @@ function main(recipesFiltered) {
     applianceList.push(data.appliance);
   }
 
-  // retrait des doublons pour chaque liste
+  // On vide la liste de manière à pouvoir importer les listes actualisées avec le filtrage
   document.querySelector('.ingredient-list').innerHTML = '';
+  // Méthode de retrait des doublons pour chaque liste
   const uniqueIngredientList = Array.from(new Set(ingredientList));
-
   uniqueIngredientList.forEach((element) => {
     const ingredientElement = document.createElement('div');
     ingredientElement.innerText = element;
@@ -105,7 +108,6 @@ function main(recipesFiltered) {
 
   document.querySelector('.ustensils-list').innerHTML = '';
   const uniqueUstensilsList = Array.from(new Set(ustensilsList));
-
   uniqueUstensilsList.forEach((element) => {
     const ustensilsElement = document.createElement('div');
     ustensilsElement.innerText = element;
@@ -116,7 +118,6 @@ function main(recipesFiltered) {
 
   document.querySelector('.appliance-list').innerHTML = '';
   const uniqueApplianceList = Array.from(new Set(applianceList));
-
   uniqueApplianceList.forEach((element) => {
     const applianceElement = document.createElement('div');
     applianceElement.innerText = element;
@@ -125,6 +126,7 @@ function main(recipesFiltered) {
   const newApplianceList = document.querySelectorAll('.appliance-list div');
   applianceListener(newApplianceList);
 
+  // Utilisation du .oninput pour filtrer en temps réel avec l'user input
   const ingredientInput = document.querySelector('#button-ingredients');
   ingredientInput.oninput = (e) => {
     const inputValue = e.target.value;
@@ -170,8 +172,10 @@ function main(recipesFiltered) {
   });
 }
 
+// Appel de la fonction main pour la 1ere fois avec l'intégralité des recettes
 main(recipesAll.recipes);
 
+// Creation des tags, de leur suppression et de l'actualisation du filtrage
 function ingredientsListener(list) {
   Array.from(list).forEach(function (element) {
     const tagText = element.innerHTML;
@@ -264,7 +268,7 @@ function ustensilsListener(list) {
   });
 }
 
-// tableau des ingredients sans doublons en lowercase
+// Tableau complet des ingredients sans doublons en lowercase utilisé pour le filtrage général
 function arrayIngredients(recipe) {
   const ingredientsAll = new Set();
 
@@ -278,10 +282,10 @@ function arrayIngredients(recipe) {
 function generalFilter() {
   const searchbarInput = document.querySelector('#search-recipe');
   const searchbarValue = searchbarInput.value;
-  // array qui contiendra les recettes filtrées
+  // Array qui contiendra les recettes filtrées
   let recipesFiltered = [];
-  // filtrage avec titre, liste des ingredients, et description de la recette
-  // filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
+  // Filtrage avec titre, liste des ingredients, et description de la recette
+  // Filtrage actif si 2 caractères ou plus ont été tapés par l'utilisateur
   if (searchbarValue.length > 2) {
     recipesFiltered = recipesAll.recipes.filter(function (recipe) {
       return (
@@ -295,11 +299,11 @@ function generalFilter() {
     recipesFiltered = recipesAll.recipes;
   }
 
-  // filtrage avec les tags sélectionnés par l'utilisateur
+  // Filtrage avec les tags sélectionnés par l'utilisateur
   let tagsSelected = Array.from(document.querySelectorAll('.tag'));
 
+  // blue = ingredients | green = appliance | orange = ustensils
   tagsSelected.forEach((tag) => {
-    // blue = ingredients | green = appliance | orange = ustensils
     if (tag.classList.contains('blue')) {
       let ingredientFiltered = [];
 
@@ -349,6 +353,7 @@ function generalFilter() {
   });
 }
 
+//Fonction pour avertir l'utilisateur qu'il doit taper au moins 3 caractères
 function showAlert() {
   const searchbarInput = document.querySelector('#search-recipe');
   const searchbarValue = searchbarInput.value;
@@ -359,12 +364,12 @@ function showAlert() {
   return;
 }
 
+// On applique la fonction sur le bouton de recherche
 const submitButton = document.querySelector('.submit-button');
-
 submitButton.addEventListener('click', (event) => {
   showAlert();
 });
-
+// mais aussi quand on appuie sur entrée
 document.body.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     showAlert();
