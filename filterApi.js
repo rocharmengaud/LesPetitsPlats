@@ -295,8 +295,11 @@ function generalFilter() {
       );
     });
     main(recipesFiltered);
+    // On reset le placeholder si l'utilisateur a tapé plus de 2 caractères
+    searchbarInput.placeholder = 'Rechercher une recette';
   } else {
     recipesFiltered = recipesAll.recipes;
+    main(recipesFiltered);
   }
 
   // Filtrage avec les tags sélectionnés par l'utilisateur
@@ -357,9 +360,8 @@ function generalFilter() {
 function showAlert() {
   const searchbarInput = document.querySelector('#search-recipe');
   const searchbarValue = searchbarInput.value;
-  console.log(searchbarValue);
   if (searchbarValue.length <= 2) {
-    alert('Veuillez au moins taper 3 caractères');
+    searchbarInput.placeholder = 'Veuillez au moins taper 3 caractères';
   }
   return;
 }
