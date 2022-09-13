@@ -319,6 +319,8 @@ function generalFilter() {
       });
       recipesFiltered = ingredientFiltered;
       main(recipesFiltered);
+      // Au cas ou l'utilisateur aurait fait une recherche à vide
+      searchbarInput.placeholder = 'Rechercher une recette';
     }
 
     if (tag.classList.contains('green')) {
@@ -331,6 +333,7 @@ function generalFilter() {
       });
       recipesFiltered = applianceFiltered;
       main(recipesFiltered);
+      searchbarInput.placeholder = 'Rechercher une recette';
     }
 
     if (tag.classList.contains('orange')) {
@@ -344,6 +347,7 @@ function generalFilter() {
       });
       recipesFiltered = ustensilsFiltered;
       main(recipesFiltered);
+      searchbarInput.placeholder = 'Rechercher une recette';
     }
   });
 
