@@ -102,6 +102,81 @@ ul {
   gap: 1rem;
 }
 
+.custom-arrow-ingredients {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: block;
+  background: #3282f7;
+  height: 90%;
+  width: 1rem;
+  pointer-events: none;
+}
+
+.custom-arrow-ingredients::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+
+  left: 30%;
+  transform: translate(-50%, 120%);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid white;
+  top: 30%;
+}
+
+.custom-arrow-appliance {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: block;
+  background: #68d9a4;
+  height: 90%;
+  width: 1rem;
+  pointer-events: none;
+}
+
+.custom-arrow-appliance::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+
+  left: 30%;
+  transform: translate(-50%, 120%);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid white;
+  top: 30%;
+}
+
+.custom-arrow-ustensils {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: block;
+  background: #ed6454;
+  height: 90%;
+  width: 1rem;
+  pointer-events: none;
+}
+
+.custom-arrow-ustensils::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+
+  left: 30%;
+  transform: translate(-50%, 120%);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid white;
+  top: 30%;
+}
+
 .dropdown-menu.show {
   display: grid;
 }
@@ -121,7 +196,7 @@ ul {
 
 .btn-secondary {
   width: 150px;
-  padding: 1rem 1rem;
+  padding: 1rem 1rem 1rem 0rem;
   border-radius: 5px;
 }
 
