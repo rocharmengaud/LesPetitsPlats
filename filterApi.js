@@ -347,6 +347,13 @@ function generalFilter() {
     }
   });
 
+  // On avertis l'utilisateur qu'une recherche vide ne fonctionne pas
+  if (recipesFiltered.length === 0) {
+    searchbarInput.value = '';
+    searchbarInput.placeholder = 'Aucune recette ne correspond à votre recherche, veuillez réessayer ou selectionner un filtre';
+    recipesFiltered = recipesAll.recipes;
+    main(recipesFiltered);
+  }
   // on vide les cartes avec un innerHtml blanc
   cardsGrid.innerHTML = '';
   // pour ensuitele remplir avec les cartes filtrées
