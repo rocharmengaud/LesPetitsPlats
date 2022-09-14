@@ -1,4 +1,3 @@
-const dropdown = document.querySelector('.dropdown');
 const buttonIngredients = document.querySelector('#button-ingredients');
 const buttonAppliance = document.querySelector('#button-appliance');
 const buttonUstensils = document.querySelector('#button-ustensils');
@@ -56,32 +55,32 @@ function onListClicked(button, list) {
 }
 
 // Ajout des events listeners sur chaque bouton et chaque liste pour appeler les fonctions précédentes
-buttonIngredients.addEventListener('click', (event) => {
+buttonIngredients.addEventListener('click', () => {
   onButtonClicked(buttonIngredients, ingredientList);
 });
 
-buttonAppliance.addEventListener('click', (event) => {
+buttonAppliance.addEventListener('click', () => {
   onButtonClicked(buttonAppliance, applianceList);
 });
 
-buttonUstensils.addEventListener('click', (event) => {
+buttonUstensils.addEventListener('click', () => {
   onButtonClicked(buttonUstensils, ustensilsList);
 });
 
-ingredientList.addEventListener('click', (event) => {
+ingredientList.addEventListener('click', () => {
   onListClicked(buttonIngredients, ingredientList);
 });
 
-applianceList.addEventListener('click', (event) => {
+applianceList.addEventListener('click', () => {
   onListClicked(buttonAppliance, applianceList);
 });
 
-ustensilsList.addEventListener('click', (event) => {
+ustensilsList.addEventListener('click', () => {
   onListClicked(buttonUstensils, ustensilsList);
 });
 
 // Permet de supprimer la class show crée par Bootstrap dont on a pas besoin
-document.querySelector('body').onclick = (e) => {
+document.querySelector('body').onclick = () => {
   ingredientList.classList.remove('show');
   applianceList.classList.remove('show');
   ustensilsList.classList.remove('show');
