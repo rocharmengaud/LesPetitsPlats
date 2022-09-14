@@ -70,6 +70,7 @@ export class recipeCard {
   }
 }
 
+// Crée les cartes et les listes (actualisées ou non)
 function main(recipesFiltered) {
   // Creation de 3 tableaux vides de maniere à pouvoir enlever les doublons par la suite
   const ingredientList = [];
@@ -78,25 +79,25 @@ function main(recipesFiltered) {
 
   // Creation d'une boucle pour pouvoir créer chacune des cartes de recettes
   // mais également importer chacune des listes (ingrédients/appareils/ustensiles)
-  for (const data of recipesFiltered) {
-    const template = new recipeCard(data);
+  for (const recipe of recipesFiltered) {
+    const template = new recipeCard(recipe);
     template.createRecipeCard();
 
     // Importation des listes
-    data.ingredients.forEach((ingredient) => {
+    recipe.ingredients.forEach((ingredient) => {
       ingredientList.push(ingredient.ingredient);
     });
 
-    data.ustensils.forEach((ustensils) => {
+    recipe.ustensils.forEach((ustensils) => {
       ustensilsList.push(ustensils);
     });
 
-    applianceList.push(data.appliance);
+    applianceList.push(recipe.appliance);
   }
 
   // On vide la liste de manière à pouvoir importer les listes actualisées avec le filtrage
   document.querySelector('.ingredient-list').innerHTML = '';
-  // Méthode de retrait des doublons pour chaque liste
+  // Méthode de retrait des doublons pour chaque liste (stockage de valeurs unique)
   const uniqueIngredientList = Array.from(new Set(ingredientList));
   uniqueIngredientList.forEach((element) => {
     const ingredientElement = document.createElement('div');
@@ -360,7 +361,7 @@ function generalFilter() {
   }
   // on vide les cartes avec un innerHtml blanc
   cardsGrid.innerHTML = '';
-  // pour ensuitele remplir avec les cartes filtrées
+  // pour ensuite le remplir avec les cartes filtrées
   recipesFiltered.forEach((data) => {
     const template = new recipeCard(data);
     template.createRecipeCard();
