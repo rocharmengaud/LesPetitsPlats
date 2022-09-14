@@ -372,6 +372,7 @@ function showAlert() {
   const searchbarInput = document.querySelector('#search-recipe');
   const searchbarValue = searchbarInput.value;
   if (searchbarValue.length <= 2) {
+    searchbarInput.value = '';
     searchbarInput.placeholder = 'Veuillez au moins taper 3 caractères';
   }
   return;
