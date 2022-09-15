@@ -168,7 +168,7 @@ function main(recipesFiltered) {
   };
 
   /* addeventlistener sur la barre de recherche générale */
-  searchbarInput.addEventListener('change', function (event) {
+  searchbarInput.addEventListener('change', function () {
     generalFilter(recipesFiltered);
   });
 }
@@ -181,7 +181,7 @@ function ingredientsListener(list) {
   Array.from(list).forEach(function (element) {
     const tagText = element.innerHTML;
 
-    element.addEventListener('click', function (event) {
+    element.addEventListener('click', function () {
       const ingredientTag = document.createElement('button');
       ingredientTag.className = 'btn btn-primary tag blue';
       ingredientTag.setAttribute('id', element.innerHTML);
@@ -200,7 +200,7 @@ function ingredientsListener(list) {
 
       // retrait du tag si la croix est cliquée et retour du tag au debut de la liste
       const tag = document.getElementById(tagText);
-      closeTag.addEventListener('click', function (event) {
+      closeTag.addEventListener('click', function () {
         tag.remove();
         // on ré-ajoute la liste complete aprés avoir supprimé le(s) tag(s)
         main(recipesAll.recipes);
@@ -213,7 +213,7 @@ function applianceListener(list) {
   Array.from(list).forEach(function (element) {
     const tagId = element.innerHTML;
 
-    element.addEventListener('click', function (event) {
+    element.addEventListener('click', function () {
       const applianceTag = document.createElement('button');
       applianceTag.className = 'btn btn-primary tag green';
       applianceTag.setAttribute('id', element.innerHTML);
@@ -229,7 +229,7 @@ function applianceListener(list) {
       buttonAppliance.value = 'Appareils';
       generalFilter();
 
-      closeTag.addEventListener('click', function (event) {
+      closeTag.addEventListener('click', function () {
         const tag = document.getElementById(tagId);
         tag.remove();
         main(recipesAll.recipes);
@@ -243,7 +243,7 @@ function ustensilsListener(list) {
   Array.from(list).forEach(function (element) {
     const tagId = element.innerHTML;
 
-    element.addEventListener('click', function (event) {
+    element.addEventListener('click', function () {
       const ustensilsTag = document.createElement('button');
       ustensilsTag.className = 'btn btn-primary tag orange';
       ustensilsTag.setAttribute('id', element.innerHTML);
@@ -259,7 +259,7 @@ function ustensilsListener(list) {
       buttonUstensils.value = 'Ustensiles';
       generalFilter();
 
-      closeTag.addEventListener('click', function (event) {
+      closeTag.addEventListener('click', function () {
         const tag = document.getElementById(tagId);
         tag.remove();
         main(recipesAll.recipes);
@@ -383,7 +383,7 @@ function showAlert() {
 
 // On applique la fonction sur le bouton de recherche
 const submitButton = document.querySelector('.submit-button');
-submitButton.addEventListener('click', (event) => {
+submitButton.addEventListener('click', () => {
   showAlert();
 });
 // mais aussi quand on appuie sur entrée
